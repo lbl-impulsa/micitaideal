@@ -1,0 +1,107 @@
+{
+  "ebooks": [
+    {
+      "id": "guia-gratis",
+      "titulo_comercial": "10 citas para este finde",
+      "subtitulo": "Mini guía gratis de Mi Cita Ideal",
+      "fichas": 10,
+      "precio_sugerido_usd": 0,
+      "etapa": "mixta",
+      "categorias": [
+        { "id": "seleccion", "nombre": "Selección para empezar", "fichas": 10 }
+      ],
+      "capitulos_extra": ["Cómo usar esta guía", "Qué sigue: los ebooks y la app"],
+      "bono": null
+    },
+    {
+      "id": "conocer",
+      "titulo_comercial": "Me gustás",
+      "subtitulo": "50 citas para conocer a alguien que te gusta por primera vez",
+      "fichas": 50,
+      "precio_sugerido_usd": 7,
+      "etapa": "conocer",
+      "momento": "Todavía no salieron: trabajo, facultad, amistad o contacto de redes.",
+      "categorias": [
+        { "id": "planes-casuales", "nombre": "Planes casuales de bajo riesgo", "fichas": 15 },
+        { "id": "planes-en-grupo", "nombre": "Planes en grupo", "fichas": 10 },
+        { "id": "por-intereses-en-comun", "nombre": "Por intereses en común", "fichas": 10 },
+        { "id": "de-amigos-a-algo-mas", "nombre": "De amigos a algo más", "fichas": 10 },
+        { "id": "por-redes-o-a-distancia", "nombre": "Por redes o a distancia", "fichas": 5 }
+      ],
+      "capitulos_extra": [
+        "Cómo saber si hay interés",
+        "Cómo invitar sin presión",
+        "Qué hacer si te dicen que no",
+        "Seguridad y consentimiento"
+      ],
+      "bono": "30 mensajes para empezar una charla"
+    },
+    {
+      "id": "primer-encuentro",
+      "titulo_comercial": "Primera cita perfecta",
+      "subtitulo": "50 citas ideales para un primer encuentro",
+      "fichas": 50,
+      "precio_sugerido_usd": 7,
+      "etapa": "primer-encuentro",
+      "momento": "Ya quedaron en verse, muchas veces después de hablar por una app.",
+      "categorias": [
+        { "id": "citas-de-una-hora", "nombre": "Citas de 1 hora", "fichas": 12 },
+        { "id": "con-actividad", "nombre": "Citas con actividad", "fichas": 12 },
+        { "id": "economicas", "nombre": "Citas económicas", "fichas": 10 },
+        { "id": "al-aire-libre", "nombre": "Al aire libre", "fichas": 8 },
+        { "id": "de-noche", "nombre": "Citas de noche", "fichas": 8 }
+      ],
+      "capitulos_extra": [
+        "Cómo elegir el plan según la persona",
+        "Seguridad en el primer encuentro",
+        "Cómo cerrar la cita y qué escribir al día siguiente"
+      ],
+      "bono": "Checklist de seguridad y guía ¿hay segunda cita?"
+    },
+    {
+      "id": "amor",
+      "titulo_comercial": "Citas para enamorar",
+      "subtitulo": "100 ideas para una cita ideal con quien puede ser el amor de tu vida",
+      "fichas": 100,
+      "precio_sugerido_usd": 12,
+      "etapa": "pareja",
+      "momento": "Ya se están conociendo o son pareja, y quieren profundizar.",
+      "categorias": [
+        { "id": "en-casa", "nombre": "En casa", "fichas": 15 },
+        { "id": "al-aire-libre", "nombre": "Al aire libre", "fichas": 15 },
+        { "id": "gastronomia", "nombre": "Gastronomía", "fichas": 15 },
+        { "id": "cultura-y-arte", "nombre": "Cultura y arte", "fichas": 10 },
+        { "id": "aventura", "nombre": "Aventura", "fichas": 10 },
+        { "id": "escapadas", "nombre": "Escapadas", "fichas": 10 },
+        { "id": "sorpresas-y-detalles", "nombre": "Sorpresas y detalles", "fichas": 10 },
+        { "id": "aniversarios-y-fechas", "nombre": "Aniversarios y fechas especiales", "fichas": 10 },
+        { "id": "a-distancia", "nombre": "A distancia", "fichas": 5 }
+      ],
+      "capitulos_extra": [],
+      "bono": "50 preguntas para conocerse en profundidad"
+    },
+    {
+      "id": "propuestas",
+      "titulo_comercial": "El momento perfecto",
+      "subtitulo": "100 formas de encontrar el mejor momento para proponer: novios, pareja, compromiso y casamiento",
+      "fichas": 100,
+      "precio_sugerido_usd": 14,
+      "etapa": "propuesta",
+      "momento": "Dar un paso en la relación.",
+      "categorias": [
+        { "id": "novios", "nombre": "Proponer ser novios", "fichas": 25, "subetapa": "novios" },
+        { "id": "formalizar-convivir", "nombre": "Formalizar o convivir", "fichas": 20, "subetapa": "formalizar-convivir" },
+        { "id": "compromiso", "nombre": "Compromiso", "fichas": 30, "subetapa": "compromiso" },
+        { "id": "casamiento", "nombre": "Casamiento", "fichas": 25, "subetapa": "casamiento" }
+      ],
+      "capitulos_extra": [
+        "Señales de que es el momento",
+        "Cómo saber si la otra persona está lista",
+        "Discursos modelo",
+        "Propuesta privada o pública",
+        "Cómo manejar un todavía no con respeto"
+      ],
+      "bono": "Planificador de propuesta paso a paso"
+    }
+  ]
+}

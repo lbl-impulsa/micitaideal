@@ -1,0 +1,41 @@
+{
+  "id": "amor-001",
+  "ebook": "amor",
+  "etapa": "pareja",
+  "categoria": "al-aire-libre",
+  "nombre": "Picnic al atardecer con playlist compartida",
+  "resumen": "Una manta, algo rico para picar y una playlist que arman entre los dos. Simple, barata y con mucha charla.",
+  "datos": {
+    "presupuesto": "bajo",
+    "duracion": "media tarde",
+    "lugar": "afuera",
+    "esfuerzo": "bajo",
+    "energia": "tranqui",
+    "clima": "con buen tiempo",
+    "intereses": ["musica", "naturaleza", "comida"]
+  },
+  "preparacion": [
+    "El día antes, armen juntos una playlist: 10 canciones cada uno.",
+    "Elegí un parque o mirador con vista al oeste para ver el atardecer.",
+    "Prepará una canasta con cosas fáciles de comer con la mano y agua.",
+    "Llevá manta, un parlante chico y una bolsa para la basura."
+  ],
+  "invitacion": {
+    "mensaje": "¿Te animás a un picnic el sábado al atardecer? Yo llevo la comida, vos la música.",
+    "en_persona": "Tengo un plan para el sábado: manta, comida rica y una playlist que armamos entre los dos. ¿Te sumás?"
+  },
+  "preguntas": [
+    "¿Qué canción te lleva directo a tu infancia?",
+    "¿Cuál fue el mejor atardecer que viste en tu vida?",
+    "Si esta playlist fuera la banda sonora de este año, ¿qué canción falta?"
+  ],
+  "toque_especial": "Escondé una notita en la canasta con la razón por la que elegiste una de tus canciones.",
+  "plan_b": "Si llueve, picnic en el living: manta en el piso, velas y la misma playlist.",
+  "despues": {
+    "mensaje_dia_siguiente": "Todavía tengo la canción 4 en la cabeza. ¿Repetimos con otra playlist?"
+  },
+  "seguridad": [],
+  "perfiles": ["hogarenos", "aventureros"],
+  "etiquetas": ["atardecer", "musica", "economica"],
+  "estado": "borrador"
+}

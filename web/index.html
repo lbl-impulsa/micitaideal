@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mi Cita Ideal</title>
+<meta name="description" content="Contanos cómo son y te armamos hasta 10 citas listas para usar: qué hacer, qué decir y qué preguntar. Gratis y sin registro.">
+<meta name="theme-color" content="#7A1F3D">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mi Cita Ideal: armá tu cita en un minuto">
+<meta property="og:description" content="Hasta 10 citas a medida, con qué decir y qué preguntar. Gratis y sin registro.">
+<meta property="og:image" content="https://micitaideal.vercel.app/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&amp;family=Playfair+Display:wght@700;800&amp;display=swap">
+<style>
+:root {
+  /* Plan: franjas plenas de vino, rosa y crema; cada cita es una entrada de papel con talón "Admite 2", el objeto memorable de la página. Todo alineado a la izquierda. */
+  --vino: #7A1F3D;
+  --vino-osc: #5A1530;
+  --coral: #E8505B;
+  --rosa: #F6D6D3;
+  --crema: #FFF8F1;
+  --dorado: #C9A35B;
+  --carbon: #2A2326;
+  --suave: #6E5A61;
+  --papel: #FFFDF9;
+  --linea: rgba(122, 31, 61, .22);
+  --f-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --f-texto: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --borde: clamp(16px, 4vw, 40px);
+  color-scheme: light;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--vino); scroll-behavior: smooth; }
+body { margin: 0; background: var(--crema); color: var(--carbon); font: 400 1.0625rem/1.55 var(--f-texto); -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; line-height: 1.08; }
+p { margin: 0; }
+[hidden] { display: none !important; }
+img, svg { max-width: 100%; }
+:focus-visible { outline: 3px solid var(--vino); outline-offset: 3px; border-radius: 6px; }
+.oscuro :focus-visible { outline-color: var(--dorado); }
+.contenedor { width: min(1120px, calc(100% - 2 * var(--borde))); margin-inline: auto; }
+.saltar { position: absolute; left: -9999px; top: 8px; background: var(--crema); color: var(--vino); padding: 10px 16px; border-radius: 999px; z-index: 60; font-weight: 700; }
+.saltar:focus { left: 16px; }
+.icono { width: 1em; height: 1em; fill: currentColor; flex: none; }
+
+/* Botones */
+.btn { appearance: none; font: 700 1rem/1.1 var(--f-texto); display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 22px; border-radius: 999px; border: 2px solid transparent; cursor: pointer; text-decoration: none; transition: transform .15s ease, background-color .15s ease, border-color .15s ease; }
+.btn:active { transform: translateY(1px) scale(.98); }
+.btn[disabled] { opacity: .45; cursor: not-allowed; transform: none; }
+.btn-claro { background: var(--crema); color: var(--vino); }
+.btn-claro:hover { background: #fff; }
+.btn-fantasma { background: transparent; color: var(--crema); border-color: rgba(255, 248, 241, .55); }
+.btn-fantasma:hover { border-color: var(--crema); background: rgba(255, 248, 241, .08); }
+.btn-vino { background: var(--vino); color: var(--crema); }
+.btn-vino:hover { background: var(--vino-osc); }
+.btn-linea { background: transparent; color: var(--vino); border-color: var(--vino); }
+.btn-linea:hover { background: rgba(122, 31, 61, .06); }
+.btn-chico { min-height: 40px; padding: 0 16px; font-size: .92rem; }
+.btn-texto { background: none; border: 0; color: var(--vino); font: 700 1rem var(--f-texto); cursor: pointer; padding: 10px 4px; min-height: 44px; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.botonera { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+/* Barra */
+.barra { background: var(--vino); color: var(--crema); }
+.barra .contenedor { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.marca { display: inline-flex; align-items: center; gap: 10px; color: inherit; text-decoration: none; font-family: var(--f-display); font-weight: 700; font-size: 1.3rem; }
+.marca .icono { width: 30px; height: 30px; fill: var(--coral); }
+.menu { display: flex; align-items: center; gap: 22px; }
+.menu ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; }
+.menu a { color: var(--rosa); text-decoration: none; font-weight: 500; font-size: .95rem; }
+.menu a:hover { color: var(--crema); text-decoration: underline; text-underline-offset: 4px; }
+.menu .ig { border: 2px solid rgba(246, 214, 211, .5); border-radius: 999px; padding: 6px 14px; color: var(--crema); }
+@media (max-width: 860px) { .menu ul { display: none; } }
+
+/* Hero */
+.hero { background: var(--vino); color: var(--crema); padding-block: clamp(32px, 6vw, 80px) clamp(56px, 8vw, 104px); overflow: hidden; }
+.hero .contenedor { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(36px, 5vw, 72px); align-items: center; }
+.hero h1 { font-size: clamp(2.5rem, 6.4vw, 4.6rem); font-weight: 800; letter-spacing: -.015em; margin-bottom: 22px; }
+.hero .bajada { font-size: clamp(1.08rem, 1.7vw, 1.28rem); color: var(--rosa); max-width: 36ch; margin-bottom: 30px; }
+.sellitos { list-style: none; display: flex; flex-wrap: wrap; gap: 10px 22px; padding: 0; margin: 26px 0 0; color: var(--rosa); font-size: .95rem; }
+.sellitos li { display: inline-flex; align-items: center; gap: 8px; }
+.sellitos .icono { fill: var(--coral); width: 16px; height: 16px; }
+.pila { position: relative; justify-self: center; width: 100%; max-width: 470px; }
+.pila::before { content: ""; position: absolute; inset: 10px -6px -10px 8px; background: var(--rosa); border-radius: 18px; transform: rotate(3.5deg); opacity: .35; }
+.pila .ticket { --muesca: var(--vino); transform: rotate(-2.5deg); }
+.pila figcaption { margin-top: 22px; font-size: .92rem; color: var(--rosa); text-align: center; }
+@media (max-width: 860px) { .hero .contenedor { grid-template-columns: 1fr; } .pila { max-width: 520px; } }
+
+/* Entrada (ticket) */
+.ticket { --muesca: var(--crema); position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 112px; background: var(--papel); color: var(--carbon); border-radius: 18px; box-shadow: 0 2px 0 rgba(42, 35, 38, .06), 0 20px 40px -24px rgba(42, 35, 38, .55); text-align: left; }
+.ticket-cuerpo { padding: 22px 22px 20px; min-width: 0; }
+.ticket h3 { font-size: clamp(1.3rem, 2.4vw, 1.6rem); font-weight: 700; color: var(--vino); margin-bottom: 8px; }
+.ticket .resumen { margin-bottom: 14px; }
+.datos { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 0 0 14px; }
+.datos li { font-size: .82rem; font-weight: 500; padding: 4px 10px; border-radius: 999px; background: var(--rosa); color: var(--vino-osc); }
+.porque { font-size: .93rem; color: var(--suave); margin-bottom: 16px; }
+.porque strong { color: var(--carbon); }
+.ticket-talon { position: relative; border-left: 2px dashed var(--linea); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 18px 8px; gap: 2px; }
+.ticket-talon::before, .ticket-talon::after { content: ""; position: absolute; left: -12px; width: 22px; height: 22px; border-radius: 50%; background: var(--muesca); }
+.ticket-talon::before { top: -11px; }
+.ticket-talon::after { bottom: -11px; }
+.ticket.abierto .ticket-talon::after { display: none; }
+.talon-chico { font-size: .75rem; color: var(--suave); }
+.talon-dos { font-family: var(--f-display); font-size: 2.6rem; font-weight: 800; line-height: 1; color: var(--vino); }
+.talon-raya { width: 48px; height: 1px; background: var(--linea); margin: 8px 0; }
+.talon-pct { font-family: var(--f-display); font-size: 1.7rem; font-weight: 800; color: var(--coral); line-height: 1; font-variant-numeric: tabular-nums; }
+.talon-serie { margin-top: 10px; font-size: .75rem; color: var(--suave); font-variant-numeric: tabular-nums; }
+.ticket-acciones { display: flex; flex-wrap: wrap; gap: 8px; }
+.ticket-detalle { grid-column: 1 / -1; border-top: 2px dashed var(--linea); padding: 22px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 28px; }
+.bloque h4 { font: 700 1rem var(--f-texto); color: var(--vino); margin: 0 0 8px; }
+.bloque ul, .bloque ol { margin: 0; }
+.bloque-ancho { grid-column: 1 / -1; }
+.checklist { list-style: none; padding: 0; display: grid; gap: 8px; }
+.checklist label { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; }
+.checklist input { width: 20px; height: 20px; accent-color: var(--vino); margin: 3px 0 0; flex: none; }
+.checklist input:checked + span { text-decoration: line-through; color: var(--suave); }
+.preguntas { padding-left: 1.1em; display: grid; gap: 6px; }
+.cita-texto { font-family: var(--f-display); font-weight: 700; font-size: 1.12rem; line-height: 1.4; background: var(--rosa); border-radius: 14px; padding: 14px 16px; margin-bottom: 10px; }
+.seguridad { background: #FBF0DD; border-left: 4px solid var(--dorado); padding: 12px 14px; border-radius: 10px; font-size: .95rem; }
+@media (max-width: 640px) { .ticket-detalle { grid-template-columns: 1fr; padding: 18px 16px; } }
+@media (max-width: 480px) {
+  .ticket { grid-template-columns: minmax(0, 1fr) 84px; }
+  .ticket-cuerpo { padding: 18px 16px; }
+  .talon-dos { font-size: 2rem; }
+  .talon-pct { font-size: 1.35rem; }
+}
+
+/* Generador */
+.generador { background: var(--rosa); padding-block: clamp(48px, 7vw, 96px); }
+.generador .contenedor { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(28px, 5vw, 64px); align-items: start; }
+.gen-intro h2 { font-size: clamp(2.1rem, 4.2vw, 3.2rem); color: var(--vino); margin-bottom: 14px; }
+.gen-intro p { max-width: 40ch; }
+.pasos { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 4px; max-width: 380px; }
+.pasos button { width: 100%; display: flex; align-items: center; gap: 12px; background: none; border: 0; padding: 7px 0; font: 500 1rem var(--f-texto); color: var(--suave); cursor: pointer; text-align: left; }
+.pasos button[disabled] { cursor: default; }
+.pasos .num { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; border: 2px solid var(--linea); font-weight: 700; font-size: .85rem; font-variant-numeric: tabular-nums; flex: none; }
+.pasos .hecho button { color: var(--carbon); }
+.pasos .hecho .num { background: var(--vino); border-color: var(--vino); color: var(--crema); }
+.pasos .actual button { color: var(--vino); font-weight: 700; }
+.pasos .actual .num { border-color: var(--vino); color: var(--vino); }
+.pasos .valor { margin-left: auto; font-size: .85rem; color: var(--vino-osc); font-weight: 500; text-align: right; }
+.tarjeta { background: var(--papel); border-radius: 22px; padding: clamp(20px, 4vw, 36px); box-shadow: 0 24px 50px -30px rgba(90, 21, 48, .5); min-height: 440px; display: flex; flex-direction: column; }
+.progreso { height: 6px; background: var(--rosa); border-radius: 999px; overflow: hidden; margin-bottom: 18px; }
+.progreso span { display: block; height: 100%; background: var(--coral); border-radius: inherit; transition: width .35s ease; }
+.paso-num { font-size: .9rem; color: var(--suave); margin-bottom: 6px; font-variant-numeric: tabular-nums; }
+.tarjeta h3 { font-size: clamp(1.6rem, 3vw, 2.1rem); margin-bottom: 8px; }
+.tarjeta h3:focus { outline: none; }
+.ayuda { color: var(--suave); margin-bottom: 22px; }
+.opciones { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.opcion { text-align: left; background: #fff; border: 2px solid var(--linea); border-radius: 16px; padding: 14px 42px 14px 16px; cursor: pointer; font: inherit; color: var(--carbon); display: grid; gap: 2px; position: relative; transition: border-color .15s ease, background-color .15s ease; }
+.opcion:hover { border-color: var(--vino); }
+.opcion .t { font-weight: 700; font-size: 1.05rem; }
+.opcion .s { font-size: .9rem; color: var(--suave); }
+.opcion[aria-pressed="true"] { border-color: var(--vino); background: #FCEDEC; }
+.opcion[aria-pressed="true"]::after { content: ""; position: absolute; top: 12px; right: 12px; width: 22px; height: 22px; border-radius: 50%; background: var(--vino) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.2l2.2 2.2L9.5 3.6' fill='none' stroke='%23FFF8F1' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 12px no-repeat; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font: 500 .98rem var(--f-texto); padding: 8px 16px; min-height: 44px; border-radius: 999px; border: 2px solid var(--linea); background: #fff; color: var(--carbon); cursor: pointer; transition: background-color .15s ease, border-color .15s ease; }
+.chip:hover { border-color: var(--vino); }
+.chip[aria-pressed="true"] { background: var(--vino); color: var(--crema); border-color: var(--vino); }
+.nav-paso { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: auto; padding-top: 26px; }
+.cargando { flex: 1; display: grid; place-items: center; align-content: center; text-align: center; gap: 18px; padding: 32px 0; }
+.latido { width: 76px; height: 76px; fill: var(--coral); animation: latido 1s ease-in-out infinite; }
+@keyframes latido { 0%, 100% { transform: scale(1); } 30% { transform: scale(1.16); } 60% { transform: scale(.95); } }
+.cargando p { font-family: var(--f-display); font-weight: 700; font-size: 1.45rem; color: var(--vino); min-height: 1.6em; }
+.listo { flex: 1; display: grid; align-content: center; gap: 14px; }
+.listo h3 { color: var(--vino); }
+@media (max-width: 900px) { .generador .contenedor { grid-template-columns: 1fr; } .pasos { display: none; } }
+@media (max-width: 520px) { .opciones { grid-template-columns: 1fr; } .tarjeta { min-height: 0; } }
+
+/* Resultados */
+.resultados { background: var(--crema); padding-block: clamp(48px, 7vw, 96px); }
+.res-cabeza { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px 24px; margin-bottom: 30px; }
+.res-cabeza h2 { font-size: clamp(2.1rem, 4.2vw, 3.2rem); color: var(--vino); margin-bottom: 10px; }
+.res-cabeza p { color: var(--suave); max-width: 60ch; }
+.lista-tickets { display: grid; gap: 24px; max-width: 880px; }
+.lista-tickets .ticket { animation: imprimir .5s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(var(--i, 0) * 70ms); }
+@keyframes imprimir { from { opacity: 0; transform: translateY(-16px) rotate(-.6deg); } to { opacity: 1; transform: none; } }
+
+/* Juegos */
+.jugar { background: var(--crema); padding-block: clamp(48px, 7vw, 96px); }
+.jugar .contenedor { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start; }
+.panel { border-radius: 26px; padding: clamp(22px, 4vw, 36px); display: flex; flex-direction: column; gap: 18px; }
+.panel h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); }
+.panel-vino { background: var(--vino); color: var(--crema); }
+.panel-vino .bajada { color: var(--rosa); }
+.panel-rosa { background: var(--rosa); }
+.panel-rosa h2 { color: var(--vino); }
+.maquina { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.rodillo { background: var(--papel); color: var(--carbon); border-radius: 14px; padding: 12px; min-height: 128px; display: flex; flex-direction: column; gap: 6px; overflow: hidden; box-shadow: inset 0 10px 14px -12px rgba(0, 0, 0, .45), inset 0 -10px 14px -12px rgba(0, 0, 0, .45); }
+.rodillo .etq { font-size: .8rem; color: var(--suave); font-weight: 500; }
+.rodillo .val { font-family: var(--f-display); font-weight: 700; font-size: 1.1rem; line-height: 1.22; color: var(--vino); }
+.rodillo.girando .val { animation: girar .09s linear infinite; filter: blur(.6px); }
+@keyframes girar { from { transform: translateY(-5px); opacity: .55; } to { transform: translateY(5px); opacity: 1; } }
+.resultado-maquina { font-family: var(--f-display); font-weight: 700; font-size: 1.3rem; line-height: 1.35; min-height: 3.6em; }
+.campo { display: grid; gap: 8px; }
+.campo label, .etiqueta { font-weight: 700; }
+.campo input[type="text"] { width: 100%; font: inherit; padding: 12px 14px; border-radius: 12px; border: 2px solid var(--linea); background: #fff; color: var(--carbon); }
+.campo input[type="text"]:focus-visible { border-color: var(--vino); }
+input[type="range"] { width: 100%; accent-color: var(--vino); min-height: 32px; }
+.nivel { font-weight: 700; color: var(--vino); }
+.chips-chicos .chip { min-height: 38px; padding: 6px 14px; font-size: .92rem; }
+.frase { font-family: var(--f-display); font-weight: 700; font-size: 1.32rem; line-height: 1.38; background: var(--papel); border-radius: 16px; padding: 18px 20px; min-height: 4.6em; }
+.nota { font-size: .92rem; color: var(--suave); }
+@media (max-width: 900px) { .jugar .contenedor { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .maquina { grid-template-columns: 1fr; } .rodillo { min-height: 0; } }
+
+/* Pasaporte */
+.pasaporte { background: var(--vino); color: var(--crema); padding-block: clamp(48px, 7vw, 96px); }
+.pasaporte .contenedor { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
+.pasaporte h2 { font-size: clamp(2.1rem, 4.2vw, 3.2rem); margin-bottom: 14px; }
+.pasaporte .bajada { color: var(--rosa); max-width: 42ch; }
+.cuenta { font-family: var(--f-display); font-weight: 800; font-size: clamp(2.6rem, 6vw, 3.6rem); line-height: 1; margin: 26px 0 8px; font-variant-numeric: tabular-nums; }
+.cuenta small { font-family: var(--f-texto); font-size: 1rem; font-weight: 500; color: var(--rosa); }
+.logro { color: var(--crema); max-width: 46ch; }
+.logro strong { color: var(--dorado); }
+.libreta { background: var(--papel); color: var(--carbon); border-radius: 18px; padding: clamp(18px, 3vw, 28px); box-shadow: 0 24px 50px -24px rgba(0, 0, 0, .55); }
+.libreta-cabeza { display: flex; justify-content: space-between; gap: 12px; font-size: .85rem; color: var(--suave); margin-bottom: 16px; }
+.sellos { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.sello { aspect-ratio: 1; border-radius: 50%; border: 2px dashed var(--linea); display: grid; place-content: center; text-align: center; font-size: .72rem; line-height: 1.2; color: var(--suave); padding: 4px; font-variant-numeric: tabular-nums; }
+.sello.lleno { border: 4px double var(--coral); color: var(--coral); background: rgba(232, 80, 91, .07); transform: rotate(var(--rot, -8deg)); }
+.sello.lleno strong { font-family: var(--f-display); font-size: .95rem; }
+.sello.nuevo { animation: sellar .45s cubic-bezier(.3, 1.6, .5, 1) both; }
+@keyframes sellar { from { transform: scale(1.9) rotate(-24deg); opacity: 0; } to { transform: scale(1) rotate(var(--rot, -8deg)); opacity: 1; } }
+.ultimas { font-size: .88rem; color: var(--suave); margin-top: 16px; }
+.vaciar { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.vaciar p { color: var(--rosa); font-size: .95rem; width: 100%; }
+@media (max-width: 860px) { .pasaporte .contenedor { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .sellos { gap: 6px; } .sello { font-size: .6rem; } .sello.lleno strong { font-size: .75rem; } }
+
+/* Ebooks */
+.ebooks { background: var(--crema); padding-block: clamp(48px, 7vw, 96px); }
+.ebooks h2 { font-size: clamp(2.1rem, 4.2vw, 3.2rem); color: var(--vino); margin-bottom: 12px; }
+.ebooks .bajada { color: var(--suave); max-width: 56ch; margin-bottom: 34px; }
+.tapas { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; list-style: none; padding: 0; margin: 0 0 36px; }
+.tapa { aspect-ratio: 3 / 4; border-radius: 5px 14px 14px 5px; padding: 18px 16px 16px 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 10px; box-shadow: inset 9px 0 0 rgba(0, 0, 0, .13), 0 18px 30px -20px rgba(42, 35, 38, .7); }
+.tapa .tit { font-family: var(--f-display); font-weight: 800; font-size: clamp(1.2rem, 2.1vw, 1.55rem); line-height: 1.06; }
+.tapa .sub { font-size: .82rem; line-height: 1.35; }
+.tapa .pie { font-size: .74rem; font-weight: 700; }
+.t1 { background: var(--rosa); color: var(--vino); }
+.t2 { background: var(--vino); color: var(--crema); }
+.t3 { background: linear-gradient(var(--coral) 0 16%, var(--papel) 16%); color: var(--vino); padding-top: 22%; }
+.t4 { background: var(--carbon); color: var(--dorado); }
+.t4 .sub, .t4 .pie { color: var(--crema); }
+.libro-meta { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: .9rem; color: var(--suave); }
+.estado { font-size: .8rem; font-weight: 700; color: var(--vino); background: var(--rosa); border-radius: 999px; padding: 3px 10px; }
+.cierre-ebooks { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; }
+@media (max-width: 900px) { .tapas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Pie */
+.pie-pagina { background: var(--carbon); color: #EADBD8; padding-block: 44px; font-size: .95rem; }
+.pie-pagina .contenedor { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 28px; }
+.pie-pagina .marca { color: var(--crema); margin-bottom: 10px; }
+.pie-pagina p + p { margin-top: 10px; }
+.pie-pagina a { color: var(--rosa); }
+@media (max-width: 760px) { .pie-pagina .contenedor { grid-template-columns: 1fr; } }
+
+/* Aviso y confeti */
+.aviso { position: fixed; left: 50%; bottom: max(20px, env(safe-area-inset-bottom)); transform: translate(-50%, 160%); background: var(--carbon); color: var(--crema); padding: 12px 20px; border-radius: 999px; font-weight: 500; box-shadow: 0 10px 30px -10px rgba(0, 0, 0, .5); transition: transform .3s ease; z-index: 50; max-width: calc(100% - 32px); text-align: center; }
+.aviso.ver { transform: translate(-50%, 0); }
+#confeti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 40; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="corazon" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 21.6c-.3 0-8.6-5.5-9.8-10.7C1.4 7.3 3.8 4.4 7.1 4.4c2.1 0 3.8 1.1 4.9 2.8 1.1-1.7 2.8-2.8 4.9-2.8 3.3 0 5.7 2.9 4.9 6.5-1.2 5.2-9.5 10.7-9.8 10.7zM12 8.4a2.6 2.6 0 1 0 0 5.2 2.6 2.6 0 1 0 0-5.2z"/></symbol>
+</svg>
+<a class="saltar" href="#generador">Ir al generador de citas</a>
+
+<header class="barra oscuro">
+  <div class="contenedor">
+    <a class="marca" href="#inicio" aria-label="Mi Cita Ideal, inicio"><svg class="icono" aria-hidden="true"><use href="#corazon"/></svg>Mi Cita Ideal</a>
+    <nav class="menu" aria-label="Secciones">
+      <ul>
+        <li><a href="#generador">Armar cita</a></li>
+        <li><a href="#jugar">Tragamonedas</a></li>
+        <li><a href="#frases">Frases</a></li>
+        <li><a href="#pasaporte">Pasaporte</a></li>
+        <li><a href="#ebooks">Ebooks</a></li>
+      </ul>
+      <a class="ig" href="https://www.instagram.com/micitaideal/" rel="noopener" target="_blank">@micitaideal</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero oscuro" aria-labelledby="titulo">
+    <div class="contenedor">
+      <div>
+        <h1 id="titulo">Ustedes ponen las ganas. Nosotros, el plan.</h1>
+        <p class="bajada">Contanos cómo son y te armamos hasta 10 citas listas para usar, con qué decir y qué preguntar en cada una.</p>
+        <div class="botonera">
+          <a class="btn btn-claro" href="#generador">Armar nuestra cita</a>
+          <a class="btn btn-fantasma" href="#jugar">Girar la tragamonedas</a>
+        </div>
+        <ul class="sellitos">
+          <li><svg class="icono" aria-hidden="true"><use href="#corazon"/></svg>Gratis</li>
+          <li><svg class="icono" aria-hidden="true"><use href="#corazon"/></svg>Sin registro</li>
+          <li><svg class="icono" aria-hidden="true"><use href="#corazon"/></svg>Nada sale de tu celular</li>
+        </ul>
+      </div>
+      <figure class="pila" style="margin:0">
+        <article class="ticket" aria-label="Cita de ejemplo">
+          <div class="ticket-cuerpo">
+            <h3>Picnic al atardecer con playlist compartida</h3>
+            <p class="resumen">Una manta, algo rico para picar y una playlist que arman entre los dos.</p>
+            <ul class="datos"><li>Modo ahorro</li><li>Media tarde</li><li>Al aire libre</li></ul>
+            <p class="porque"><strong>Por qué esta:</strong> a los dos les gusta la música.</p>
+          </div>
+          <div class="ticket-talon">
+            <span class="talon-chico">Admite</span>
+            <span class="talon-dos">2</span>
+            <span class="talon-raya"></span>
+            <span class="talon-chico">Match</span>
+            <span class="talon-pct">94%</span>
+            <span class="talon-serie">N.º 007</span>
+          </div>
+        </article>
+        <figcaption>Así se ve una cita armada. La de ustedes puede ser mejor.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="generador" class="generador" aria-labelledby="gen-titulo">
+    <div class="contenedor">
+      <div class="gen-intro">
+        <h2 id="gen-titulo">Armá tu cita ideal</h2>
+        <p>Siete preguntas rápidas y listo. No pedimos nombre, mail ni teléfono: las respuestas viven en esta pantalla y se van cuando la cerrás.</p>
+        <ol class="pasos" id="lista-pasos" aria-label="Pasos del generador"></ol>
+      </div>
+      <div class="tarjeta" id="tarjeta" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="resultados" class="resultados" aria-labelledby="res-titulo" hidden>
+    <div class="contenedor">
+      <div class="res-cabeza">
+        <div>
+          <h2 id="res-titulo" tabindex="-1">Sus citas están listas</h2>
+          <p id="res-resumen"></p>
+        </div>
+        <div class="botonera">
+          <button type="button" class="btn btn-linea" id="cambiar">Cambiar respuestas</button>
+          <button type="button" class="btn-texto" id="de-cero">Empezar de cero</button>
+        </div>
+      </div>
+      <div class="lista-tickets" id="lista-tickets"></div>
+    </div>
+  </section>
+
+  <section id="jugar" class="jugar" aria-label="Atajos para decidir rápido">
+    <div class="contenedor">
+      <div class="panel panel-vino oscuro">
+        <h2>La tragamonedas del amor</h2>
+        <p class="bajada">Tres rodillos, una cita. Si sale algo ridículo, mejor: eso también es una cita.</p>
+        <div class="maquina" aria-live="polite">
+          <div class="rodillo" id="r-donde"><span class="etq">Dónde</span><span class="val">En la terraza</span></div>
+          <div class="rodillo" id="r-que"><span class="etq">Qué hacen</span><span class="val">armen una playlist de 10 canciones cada uno</span></div>
+          <div class="rodillo" id="r-giro"><span class="etq">El giro</span><span class="val">con música de los 80</span></div>
+        </div>
+        <p class="resultado-maquina" id="maquina-texto">En la terraza, armen una playlist de 10 canciones cada uno, con música de los 80.</p>
+        <div class="botonera">
+          <button type="button" class="btn btn-claro" id="girar">Girar</button>
+          <button type="button" class="btn btn-fantasma" id="maquina-copiar">Copiar</button>
+          <a class="btn btn-fantasma" id="maquina-wa" href="#" target="_blank" rel="noopener">Mandar por WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="panel panel-rosa" id="frases">
+        <h2>¿Cómo lo invito?</h2>
+        <p>Elegí el tono, escribí el plan y llevate la frase.</p>
+        <div class="campo">
+          <label for="nervios">¿Cuántos nervios tenés?</label>
+          <input type="range" id="nervios" min="0" max="100" value="60" aria-describedby="nivel">
+          <span class="nivel" id="nivel">Mariposas haciendo aeróbic</span>
+        </div>
+        <div class="campo">
+          <span class="etiqueta" id="tono-etq">Tono</span>
+          <div class="chips" role="group" aria-labelledby="tono-etq" id="tonos">
+            <button type="button" class="chip" data-tono="directo" aria-pressed="false">Directo</button>
+            <button type="button" class="chip" data-tono="gracioso" aria-pressed="false">Gracioso</button>
+            <button type="button" class="chip" data-tono="romantico" aria-pressed="true">Romántico</button>
+            <button type="button" class="chip" data-tono="timido" aria-pressed="false">Tímido</button>
+          </div>
+        </div>
+        <div class="campo">
+          <label for="plan">El plan</label>
+          <input type="text" id="plan" value="un café" maxlength="60" autocomplete="off">
+          <div class="chips chips-chicos" aria-label="Planes rápidos" role="group">
+            <button type="button" class="chip" data-plan="un café">un café</button>
+            <button type="button" class="chip" data-plan="un helado">un helado</button>
+            <button type="button" class="chip" data-plan="una caminata">una caminata</button>
+            <button type="button" class="chip" data-plan="ver una peli">ver una peli</button>
+          </div>
+        </div>
+        <p class="frase" id="frase" aria-live="polite">Hay un plan que me da vueltas hace días: un café con vos. ¿Te gustaría?</p>
+        <div class="botonera">
+          <button type="button" class="btn btn-vino" id="otra-frase">Otra frase</button>
+          <button type="button" class="btn btn-linea" id="frase-copiar">Copiar</button>
+          <a class="btn btn-linea" id="frase-wa" href="#" target="_blank" rel="noopener">Mandar por WhatsApp</a>
+        </div>
+        <p class="nota">Si te dice que no o no contesta, todo bien: no insistas. La buena onda también es parte del plan.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pasaporte" class="pasaporte oscuro" aria-labelledby="pase-titulo">
+    <div class="contenedor">
+      <div>
+        <h2 id="pase-titulo">Pasaporte de citas</h2>
+        <p class="bajada">Cada vez que tocan "¡La hicimos!" en una entrada, suman un sello. Se guarda solo en este dispositivo.</p>
+        <p class="cuenta" id="cuenta">0 <small>de 10 sellos</small></p>
+        <p class="logro" id="logro">Todavía no hay sellos. La primera cita es la que más cuesta.</p>
+        <div class="vaciar" id="vaciar-zona" hidden>
+          <button type="button" class="btn btn-fantasma btn-chico" id="vaciar">Vaciar pasaporte</button>
+        </div>
+        <div class="vaciar" id="vaciar-confirmar" hidden>
+          <p>¿Seguro? Se borran todos los sellos de este dispositivo.</p>
+          <button type="button" class="btn btn-claro btn-chico" id="vaciar-si">Sí, vaciar</button>
+          <button type="button" class="btn btn-fantasma btn-chico" id="vaciar-no">Cancelar</button>
+        </div>
+      </div>
+      <div class="libreta">
+        <div class="libreta-cabeza"><span>Mi Cita Ideal</span><span>Válido para 2 personas</span></div>
+        <div class="sellos" id="sellos"></div>
+        <p class="ultimas" id="ultimas"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="ebooks" class="ebooks" aria-labelledby="eb-titulo">
+    <div class="contenedor">
+      <h2 id="eb-titulo">Se vienen los ebooks</h2>
+      <p class="bajada">Cuatro guías con 300 citas, frases y preguntas para cada etapa, del primer café al sí, acepto.</p>
+      <ul class="tapas">
+        <li>
+          <div class="tapa t1"><span class="tit">Me gustás</span><span class="sub">50 citas para conocer a alguien que te gusta</span><span class="pie">Mi Cita Ideal</span></div>
+          <div class="libro-meta"><span class="estado">En preparación</span><span>50 citas</span></div>
+        </li>
+        <li>
+          <div class="tapa t2"><span class="tit">Primera cita perfecta</span><span class="sub">50 citas ideales para un primer encuentro</span><span class="pie">Mi Cita Ideal</span></div>
+          <div class="libro-meta"><span class="estado">En preparación</span><span>50 citas</span></div>
+        </li>
+        <li>
+          <div class="tapa t3"><span class="tit">Citas para enamorar</span><span class="sub">100 ideas con quien puede ser el amor de tu vida</span><span class="pie">Mi Cita Ideal</span></div>
+          <div class="libro-meta"><span class="estado">En preparación</span><span>100 citas</span></div>
+        </li>
+        <li>
+          <div class="tapa t4"><span class="tit">El momento perfecto</span><span class="sub">100 formas de proponer: novios, pareja, compromiso y casamiento</span><span class="pie">Mi Cita Ideal</span></div>
+          <div class="libro-meta"><span class="estado">En preparación</span><span>100 ideas</span></div>
+        </li>
+      </ul>
+      <div class="cierre-ebooks">
+        <p>¿Querés enterarte primero? Escribinos CITA por mensaje directo.</p>
+        <a class="btn btn-vino" href="https://www.instagram.com/micitaideal/" target="_blank" rel="noopener">Ir a @micitaideal</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pie-pagina oscuro">
+  <div class="contenedor">
+    <div>
+      <a class="marca" href="#inicio"><svg class="icono" aria-hidden="true"><use href="#corazon"/></svg>Mi Cita Ideal</a>
+      <p>Del primer café al sí, acepto.</p>
+      <p>Un proyecto de LBL Impulsa. <a href="https://www.instagram.com/micitaideal/" target="_blank" rel="noopener">@micitaideal</a></p>
+    </div>
+    <div>
+      <p>Esta página no pide datos personales, no usa cookies y no guarda nada en servidores. Todo pasa en tu navegador; el pasaporte queda solo en tu dispositivo.</p>
+      <p>Primera cita: elegí un lugar con gente, avisale a alguien de confianza dónde vas a estar y volvé por tu cuenta.</p>
+      <p>Las ideas son sugerencias para pasarla bien. Cada plan se hace con respeto y con ganas de los dos.</p>
+      <p>© 2026 Mi Cita Ideal</p>
+    </div>
+  </div>
+</footer>
+
+<div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+<canvas id="confeti" aria-hidden="true"></canvas>
+<script src="motor.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

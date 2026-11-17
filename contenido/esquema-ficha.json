@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://micitaideal.com/esquemas/ficha.json",
+  "title": "Ficha de cita — Mi Cita Ideal",
+  "description": "Una idea de cita lista para usar. La leen los ebooks, la app, las redes y los emails.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id", "ebook", "etapa", "categoria", "nombre", "resumen", "datos",
+    "preparacion", "invitacion", "preguntas", "toque_especial", "plan_b",
+    "despues", "seguridad", "perfiles", "estado"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^(conocer|primer-encuentro|amor|propuestas|guia-gratis)-[0-9]{3}$",
+      "description": "Igual al nombre del archivo sin .json"
+    },
+    "ebook": { "enum": ["conocer", "primer-encuentro", "amor", "propuestas", "guia-gratis"] },
+    "etapa": { "enum": ["conocer", "primer-encuentro", "pareja", "propuesta"] },
+    "subetapa": {
+      "enum": ["novios", "formalizar-convivir", "compromiso", "casamiento"],
+      "description": "Solo para el ebook de propuestas"
+    },
+    "categoria": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Id de categoría del catálogo del ebook"
+    },
+    "nombre": { "type": "string", "minLength": 5, "maxLength": 70 },
+    "resumen": { "type": "string", "minLength": 20, "maxLength": 200 },
+    "datos": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["presupuesto", "duracion", "lugar", "esfuerzo", "energia", "clima", "intereses"],
+      "properties": {
+        "presupuesto": { "enum": ["bajo", "medio", "alto"] },
+        "duracion": { "enum": ["1 hora", "media tarde", "dia completo", "fin de semana"] },
+        "lugar": { "enum": ["adentro", "afuera", "ambos"] },
+        "esfuerzo": { "enum": ["bajo", "medio", "alto"] },
+        "energia": { "enum": ["tranqui", "intermedia", "aventura"] },
+        "clima": { "enum": ["cualquiera", "con buen tiempo", "ideal con lluvia"] },
+        "intereses": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": ["comida", "cocina", "musica", "deporte", "arte", "naturaleza", "juegos",
+                     "series-peliculas", "lectura", "viajes", "bienestar", "animales", "tecnologia"]
+          }
+        }
+      }
+    },
+    "preparacion": {
+      "type": "array", "minItems": 3, "maxItems": 6,
+      "items": { "type": "string", "minLength": 5, "maxLength": 140 }
+    },
+    "invitacion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mensaje", "en_persona"],
+      "properties": {
+        "mensaje": { "type": "string", "minLength": 10, "maxLength": 200 },
+        "en_persona": { "type": "string", "minLength": 10, "maxLength": 200 }
+      }
+    },
+    "preguntas": {
+      "type": "array", "minItems": 3, "maxItems": 5,
+      "items": { "type": "string", "minLength": 8, "maxLength": 140 }
+    },
+    "toque_especial": { "type": "string", "minLength": 10, "maxLength": 200 },
+    "plan_b": { "type": "string", "minLength": 10, "maxLength": 200 },
+    "despues": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mensaje_dia_siguiente"],
+      "properties": {
+        "mensaje_dia_siguiente": { "type": "string", "minLength": 10, "maxLength": 200 }
+      }
+    },
+    "seguridad": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 5, "maxLength": 160 },
+      "description": "Obligatoria (al menos 1) en etapas conocer y primer-encuentro"
+    },
+    "perfiles": {
+      "type": "array", "minItems": 1, "uniqueItems": true,
+      "items": { "enum": ["aventureros", "hogarenos", "culturales", "gourmet"] }
+    },
+    "etiquetas": {
+      "type": "array", "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[a-z0-9-]+$" }
+    },
+    "estado": { "enum": ["borrador", "revisada", "aprobada"] }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "etapa": { "enum": ["conocer", "primer-encuentro"] } } },
+      "then": { "properties": { "seguridad": { "minItems": 1 } } }
+    },
+    {
+      "if": { "properties": { "ebook": { "const": "propuestas" } } },
+      "then": { "required": ["subetapa"], "properties": { "etapa": { "const": "propuesta" } } }
+    }
+  ]
+}
