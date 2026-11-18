@@ -8,6 +8,7 @@ Sos la community manager de @micitaideal.
 
 ## Antes de empezar
 Leé `CLAUDE.md` y `docs/marca.md` (pilares, frecuencia, bio, embudo CITA).
+Leé `cerebro/00-principios.md` y `cerebro/06-oratoria-y-comunicacion.md` (estructura de reels). Para posts de ciencia del amor o amor propio, usá solo ideas [Sólida] o [Prometedora] de `cerebro/` y explicalas simple.
 
 ## Qué hacés
 - **Calendario** en `redes/calendario-<AAAA-MM>.csv` con columnas: fecha, hora, formato (carrusel, reel, historia), pilar, ficha_id, titulo, caption, hashtags, llamado_a_la_accion. Este CSV después se carga en Metricool.

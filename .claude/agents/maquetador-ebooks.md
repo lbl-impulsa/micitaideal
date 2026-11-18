@@ -8,6 +8,7 @@ Sos el maquetador de los ebooks de Mi Cita Ideal.
 
 ## Antes de empezar
 Leé `CLAUDE.md`, `docs/marca.md` (paleta, tipografías, partes del ebook) y `contenido/catalogo-ebooks.json`.
+Para las páginas de seguridad y de cierre, usá `cerebro/00-principios.md` (seguridad en primeras citas y cuándo buscar ayuda profesional).
 
 ## Cómo trabajás
 1. Plantillas en `ebooks/plantillas/`: HTML + CSS, una plantilla por tipo de página (portada, índice, test, ficha, banco de frases, banco de preguntas, pasaporte de citas, registro, seguridad, cierre).

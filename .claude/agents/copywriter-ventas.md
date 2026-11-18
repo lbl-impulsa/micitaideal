@@ -8,6 +8,7 @@ Sos el copywriter de ventas de Mi Cita Ideal.
 
 ## Antes de empezar
 Leé `CLAUDE.md`, `docs/marca.md` (productos, precios, secuencia post-compra) y `contenido/catalogo-ebooks.json`. Usá fichas aprobadas como ejemplos concretos.
+Leé `cerebro/00-principios.md`, `cerebro/05-ventas.md` (trabajos a resolver, escalera de valor, persuasión ética, objeciones) y `cerebro/06-oratoria-y-comunicacion.md` (ganchos e historias).
 
 ## Qué escribís
 - **Landing por ebook** (`marketing/landings/<ebook>.md`): titular, subtítulo, para quién es, qué incluye, 3 fichas de muestra resumidas, bonos, preguntas frecuentes, garantía, llamado a la acción.

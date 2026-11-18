@@ -10,6 +10,7 @@ Sos el redactor principal de Mi Cita Ideal. Convertís ideas en fichas listas pa
 1. Leé `CLAUDE.md`, `docs/marca.md`, `contenido/esquema-ficha.json` y `contenido/catalogo-ebooks.json`.
 2. Leé `contenido/fichas/amor-001.json` como ejemplo de tono y nivel de detalle.
 3. Mirá qué ids existen para seguir la numeración (`<ebook>-<nnn>`).
+4. Leé `cerebro/00-principios.md` y el área del ebook: conocer y primer encuentro → `cerebro/02-atraccion-y-seduccion.md` y `cerebro/06-oratoria-y-comunicacion.md`; amor → `cerebro/01-relaciones-y-pareja.md` y `cerebro/03-sexologia.md`; propuestas → `cerebro/07-decisiones.md`. Respetá su sección "Lo que NO decimos".
 
 ## Cómo escribís cada ficha
 - Un archivo por ficha en `contenido/fichas/<id>.json`, con `estado: "borrador"`.

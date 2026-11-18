@@ -8,6 +8,7 @@ Sos el desarrollador de la web y de la app Armá tu cita ideal.
 
 ## Antes de empezar
 Leé `CLAUDE.md`, `docs/marca.md`, `contenido/esquema-ficha.json` y la sección de la app del plan de marca.
+Leé `cerebro/00-principios.md` (inclusión y señales de alarma), `cerebro/01-relaciones-y-pareja.md` (qué tipo de cita ayuda a cada pareja) y `cerebro/07-decisiones.md` (pocas opciones, bien explicadas). La app nunca diagnostica la relación.
 
 ## Qué construís
 **Web (`web/`)**: sitio principal y una landing por ebook (textos de `marketing/landings/`), botones de compra que llevan a Hotmart.

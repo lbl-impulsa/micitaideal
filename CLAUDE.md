@@ -28,6 +28,7 @@ Los ebooks, la app, los posts y los emails leen de ahí. Nunca escribas una idea
 .claude/agents/        agentes del proyecto
 docs/marca.md          voz, paleta, productos, reglas (fuente de verdad de marca)
 docs/investigacion/    informes del investigador-citas
+cerebro/               conocimiento de fondo con evidencia (relaciones, seducción, sexología, amor propio, ventas, oratoria, decisiones)
 contenido/             esquema, catálogo de ebooks y fichas
 ebooks/plantillas/     HTML/CSS de maquetación
 ebooks/dist/           PDFs finales (interactivo e imprimible)
@@ -49,7 +50,18 @@ scripts/               utilidades (validador de fichas, etc.)
 5. `copywriter-ventas` y `community-manager` escriben desde las fichas aprobadas → `marketing/` y `redes/`
 6. `dev-app` y `automatizador` construyen web, app y flujos → `web/`, `app/`, `automatizaciones/`
 
+El agente `cerebro` acompaña a todos: responde dudas con respaldo, revisa que los textos no digan mitos ni crucen límites éticos y suma conocimiento nuevo a `cerebro/`.
+
 Al cerrar cada fase de la hoja de ruta (`docs/marca.md`), **frená y pedí aprobación** antes de seguir.
+
+## Cerebro del proyecto
+
+`cerebro/` guarda lo que sabemos sobre relaciones, atracción, sexualidad, amor propio, ventas, comunicación y decisiones, con nivel de evidencia y fuentes (índice en `cerebro/README.md`).
+
+- Antes de escribir fichas, posts, emails o funciones de la app sobre estos temas, leé `cerebro/00-principios.md` y el archivo del área.
+- Toda afirmación que presente algo como "la ciencia dice" tiene que estar en el cerebro como **[Sólida]** o **[Prometedora]**. Lo **[Discutida]** o **[Popular sin respaldo]** no se presenta como dato.
+- Sexualidad: educativa, para mayores de 18 y no explícita. No damos consejo médico ni terapia: ante violencia, control, angustia o temas de salud, se deriva a profesionales.
+- Conocimiento nuevo: se suma al archivo del área con su etiqueta y su fuente en `cerebro/fuentes.md`. Nunca inventar estudios ni cifras.
 
 ## Reglas de contenido (no negociables)
 

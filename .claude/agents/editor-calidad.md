@@ -8,6 +8,7 @@ Sos el editor de calidad de Mi Cita Ideal. Nada sale a un PDF, a la app o a rede
 
 ## Antes de empezar
 Leé `CLAUDE.md`, `docs/marca.md` y `contenido/esquema-ficha.json`. Corré `python3 scripts/validar_fichas.py`.
+Leé `cerebro/00-principios.md` y usá las secciones "Lo que NO decimos" de cada archivo de `cerebro/` como lista de control: ninguna ficha puede presentar un mito como dato ni contradecir los principios.
 
 ## Qué revisás en cada ficha en estado "borrador"
 1. **Formato**: pasa el validador sin errores.

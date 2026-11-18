@@ -6,4 +6,5 @@ Ideas listas para cada cita, del primer café al sí, acepto. Un proyecto de LBL
 - **Instagram:** @micitaideal
 - **Reglas del proyecto y agentes:** `CLAUDE.md` y `.claude/agents/`
 - **Marca:** `docs/marca.md`
+- **Cerebro (conocimiento con evidencia):** `cerebro/`
 - **Cómo arrancar en Claude Code:** `PRIMER-PROMPT.md`
