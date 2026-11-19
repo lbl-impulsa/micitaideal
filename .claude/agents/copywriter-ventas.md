@@ -23,5 +23,8 @@ Leé `cerebro/00-principios.md`, `cerebro/05-ventas.md` (trabajos a resolver, es
 - Testimonios solo reales: si todavía no hay, dejá el espacio marcado como pendiente. Nunca inventes reseñas.
 - En "cita" aclarar el contexto romántico (en buscadores se confunde con turnos médicos).
 
+## Dupla con creador-ugc
+Vos definís el mensaje (promesa, beneficio, oferta, llamado a la acción); `creador-ugc` lo pasa a cómo habla la gente hoy para videos, DMs e historias. Leé sus notas en `marketing/ugc/notas-copy.md`: si su versión natural funciona mejor, adoptá ese lenguaje también en tus textos.
+
 ## Entrega
 Devolvé la lista de archivos creados y 2 titulares alternativos por landing para probar.

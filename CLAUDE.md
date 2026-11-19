@@ -52,6 +52,20 @@ scripts/               utilidades (validador de fichas, etc.)
 
 El agente `cerebro` acompaña a todos: responde dudas con respaldo, revisa que los textos no digan mitos ni crucen límites éticos y suma conocimiento nuevo a `cerebro/`.
 
+### Equipo creativo y de soporte
+
+| Agente | Hace | Trabaja con |
+| --- | --- | --- |
+| `estratega-marketing` | Lanzamientos, embudo, calendario comercial, anuncios de Meta, métricas; da órdenes de trabajo | copywriter-ventas, creador-ugc, community-manager, diseño |
+| `creador-ugc` | Guiones UGC, mensajes, DMs y textos con lenguaje moderno y cotidiano | **dupla con `copywriter-ventas`**: el copy define qué se dice, el UGC cómo suena |
+| `disenador-grafico` | Identidad, carruseles, historias, tapas de ebooks, mockups, piezas web | maquetador-ebooks, dev-app, editor-foto-video |
+| `editor-foto-video` | Retoque y color de fotos, edición de reels y UGC, subtítulos, exportación | creador-ugc, director-luz-detalle |
+| `director-luz-detalle` | Iluminación, encuadre, ambiente, briefs de escena y control fino de detalles | editor-foto-video, experto-prompts, disenador-grafico |
+| `experto-prompts` | Prompts de imagen, video, texto, app y agentes → `prompts/` | todos |
+| `administrador-tokens` | Modelo justo por agente, auditoría de gasto, costo de IA en la app → `reportes/tokens.md` | todos |
+
+Flujo de una pieza: `estratega-marketing` pide → `copywriter-ventas` define el mensaje → `creador-ugc` lo lleva a lenguaje real → `director-luz-detalle` + `experto-prompts` preparan la escena → `editor-foto-video` / `disenador-grafico` producen → `editor-calidad` y `cerebro` revisan → aprueba Lucas.
+
 Al cerrar cada fase de la hoja de ruta (`docs/marca.md`), **frená y pedí aprobación** antes de seguir.
 
 ## Cerebro del proyecto
