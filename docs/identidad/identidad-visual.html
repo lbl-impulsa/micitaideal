@@ -1,0 +1,555 @@
+<title>Identidad Mi Cita Ideal</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Caveat:wght@500;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=DM+Serif+Display&family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,400..700&family=Outfit:wght@400;500;600;700&family=Pacifico&family=Playfair+Display:wght@600;700&display=swap">
+<style>
+/* Tablero de marca: bandas a lo ancho, contenido en columna de 1120px; un solo look claro a propósito (las muestras de color no se invierten) */
+:root{
+  --bordo:#7A1F3D; --rojo:#E8505B; --rojo-a:#C8323F; --rosa:#F6D6D3; --crema:#FFF8F1; --blanco:#FFFFFF; --dorado:#C9A35B; --carbon:#2A2326;
+  --linea:#EBD9D2; --suave:#6B5A5F; --tarjeta:#FFFFFF;
+  --f-tit:"Fraunces", Georgia, "Times New Roman", serif;
+  --f-txt:"DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mano:"Caveat", "Comic Sans MS", cursive;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+body{background:var(--crema);color:var(--carbon);font-family:var(--f-txt);font-size:16px;line-height:1.55}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+h1,h2,h3{font-family:var(--f-tit);text-wrap:balance;margin:0;line-height:1.1}
+h2{font-size:clamp(28px,4vw,40px);font-weight:650;color:var(--bordo)}
+h3{font-size:22px;font-weight:600}
+p{margin:0}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--rojo-a)}
+.mano{font-family:var(--f-mano);font-size:24px;color:var(--rojo-a);line-height:1.1}
+section{padding-block:56px}
+.sec-head{display:grid;gap:10px;max-width:68ch;margin-bottom:28px}
+.sec-head p{color:var(--suave)}
+
+/* Portada */
+.portada{background:var(--bordo);color:var(--crema);padding-block:56px 48px;position:relative;overflow:hidden}
+.portada .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:center}
+.portada h1{font-size:clamp(38px,6vw,64px);font-weight:700;color:var(--crema)}
+.portada h1 em{font-style:italic;font-weight:500;color:var(--rosa)}
+.portada p{color:#F3DCD8;max-width:52ch;margin-top:16px;font-size:17px}
+.portada .mano{color:var(--rosa);margin-top:18px;font-size:26px}
+.crit{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.crit div{background:rgba(255,248,241,.08);border:1px solid rgba(255,248,241,.18);border-radius:14px;padding:14px}
+.crit b{display:block;font-family:var(--f-tit);font-size:18px;color:var(--crema)}
+.crit span{font-size:13.5px;color:#F3DCD8}
+
+/* Selector de fondo */
+.fondos{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:22px}
+.fondos span{font-size:14px;color:var(--suave);margin-right:4px}
+.chip{border:1.5px solid var(--linea);background:var(--blanco);color:var(--carbon);font:500 14px var(--f-txt);padding:8px 14px;border-radius:999px;cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+.chip i{width:14px;height:14px;border-radius:50%;border:1px solid rgba(0,0,0,.15)}
+.chip[aria-pressed="true"]{border-color:var(--bordo);background:var(--bordo);color:var(--crema)}
+.chip:focus-visible,button:focus-visible{outline:3px solid var(--rojo);outline-offset:2px}
+
+/* Logos */
+.logos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:20px}
+.logo-card{background:var(--tarjeta);border:1px solid var(--linea);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+.logo-card.reco{border:2px solid var(--bordo)}
+.escena{--ink:var(--bordo);--mark:var(--rojo);--hole:var(--crema);--sub:var(--suave);background:var(--crema);min-height:200px;display:grid;place-items:center;padding:28px 18px;position:relative;transition:background .25s}
+.f-blanco .escena{background:var(--blanco);--hole:var(--blanco)}
+.f-bordo .escena{background:var(--bordo);--ink:var(--crema);--mark:var(--rojo);--hole:var(--bordo);--sub:#F3DCD8}
+.f-rosa .escena{background:var(--rosa);--hole:var(--rosa)}
+.badge-reco{position:absolute;top:12px;left:12px;background:var(--bordo);color:var(--crema);font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
+.f-bordo .badge-reco{background:var(--crema);color:var(--bordo)}
+.lockup{display:flex;align-items:center;gap:12px;color:var(--ink)}
+.lockup svg{flex:none}
+.wm{display:grid;line-height:1}
+.wm small{font-family:var(--f-txt);font-size:12.5px;letter-spacing:.04em;color:var(--sub);margin-top:6px}
+.info{padding:18px 20px 20px;display:grid;gap:12px;flex:1}
+.info .tit{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.info .letra{font-family:var(--f-tit);font-size:15px;color:var(--rojo-a);font-weight:600}
+.info p{font-size:14.5px;color:var(--suave)}
+.mini{display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--suave)}
+.mini figure{margin:0;display:grid;justify-items:center;gap:4px}
+.avatar{width:56px;height:56px;border-radius:50%;background:var(--bordo);display:grid;place-items:center;--mark:var(--rojo);--hole:var(--bordo);--ink:var(--crema);box-shadow:0 0 0 2px var(--blanco),0 0 0 4px #E1306C33}
+.fav{background:#EEE7E4;border-radius:8px 8px 0 0;padding:6px 10px;display:flex;gap:6px;align-items:center;font-size:11.5px;color:var(--carbon);--mark:var(--rojo);--hole:#EEE7E4;--ink:var(--bordo)}
+.barras{display:grid;gap:6px}
+.barra{display:grid;grid-template-columns:92px 1fr 22px;gap:8px;align-items:center;font-size:13px}
+.barra .pista{height:8px;background:#F4E7E3;border-radius:99px;overflow:hidden}
+.barra .pista b{display:block;height:100%;background:var(--rojo);border-radius:99px}
+.barra em{font-style:normal;font-variant-numeric:tabular-nums;color:var(--suave);text-align:right}
+.pc{display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:13.5px}
+.pc div{display:grid;gap:3px}
+.pc strong{font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.pc .mas strong{color:#2E7D5B}.pc .menos strong{color:var(--rojo-a)}
+
+/* Entrada (opción B) */
+.ticket{display:flex;align-items:stretch;background:var(--bordo);color:var(--crema);border-radius:12px;
+  -webkit-mask:radial-gradient(circle at 0 50%,#0000 11px,#000 11.5px) left/51% 100% no-repeat,radial-gradient(circle at 100% 50%,#0000 11px,#000 11.5px) right/51% 100% no-repeat;
+  mask:radial-gradient(circle at 0 50%,#0000 11px,#000 11.5px) left/51% 100% no-repeat,radial-gradient(circle at 100% 50%,#0000 11px,#000 11.5px) right/51% 100% no-repeat}
+.f-bordo .ticket{background:var(--crema);color:var(--bordo)}
+.ticket .main{padding:16px 18px 16px 26px;display:grid;gap:4px}
+.ticket .main span{font-family:"DM Serif Display",Georgia,serif;font-size:30px;line-height:1}
+.ticket .main small{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;opacity:.8}
+.ticket .stub{border-left:2px dashed currentColor;padding:12px 22px 12px 14px;display:grid;place-items:center;text-align:center;font-size:10px;letter-spacing:.15em;text-transform:uppercase;opacity:.95}
+.ticket .stub b{display:block;font-family:"DM Serif Display",Georgia,serif;font-size:28px;letter-spacing:0;line-height:1;color:var(--rojo)}
+
+/* Paleta */
+.paleta{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:14px}
+.sw{border-radius:18px;overflow:hidden;border:1px solid var(--linea);background:var(--blanco);display:flex;flex-direction:column}
+.sw .c{height:120px;display:flex;align-items:flex-end;padding:10px 12px;font-family:var(--f-tit);font-size:18px;font-weight:600}
+.sw .d{padding:12px;display:grid;gap:4px;font-size:13px}
+.sw .d code{font-family:ui-monospace,"Cascadia Mono",Consolas,monospace;font-size:13px;font-weight:600}
+.sw .d span{color:var(--suave)}
+.copiar{justify-self:start;border:1px solid var(--linea);background:var(--crema);border-radius:8px;font:500 12px var(--f-txt);padding:4px 8px;cursor:pointer;color:var(--carbon)}
+.proporcion{display:flex;height:46px;border-radius:14px;overflow:hidden;margin-top:22px;border:1px solid var(--linea)}
+.proporcion div{display:grid;place-items:center;font-size:12.5px;font-weight:700;min-width:0;white-space:nowrap;overflow:hidden}
+.leyenda{font-size:13.5px;color:var(--suave);margin-top:8px}
+
+.variantes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px;margin-top:36px}
+.var{background:var(--blanco);border:1px solid var(--linea);border-radius:20px;padding:18px;display:grid;gap:14px}
+.var .tira{display:flex;height:54px;border-radius:12px;overflow:hidden}
+.var .tira div{flex:1}
+.var .demo{border-radius:14px;padding:16px;display:grid;gap:10px}
+.var .demo h4{margin:0;font-family:var(--f-tit);font-size:22px;line-height:1.1}
+.var .demo p{font-size:13.5px}
+.var .demo .acc{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn{border:0;border-radius:999px;padding:9px 16px;font:700 13.5px var(--f-txt)}
+.tag{border-radius:999px;padding:4px 10px;font-size:12px;font-weight:500}
+.var .hex{font-family:ui-monospace,Consolas,monospace;font-size:12px;color:var(--suave);display:flex;gap:10px;flex-wrap:wrap}
+
+.contraste{margin-top:36px;background:var(--blanco);border:1px solid var(--linea);border-radius:20px;overflow:hidden}
+.tabla-scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+th,td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--linea)}
+th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--suave);font-weight:700;background:#FFFBF7}
+tr:last-child td{border-bottom:0}
+.muestra{display:inline-block;padding:6px 12px;border-radius:8px;font-weight:600}
+.ratio{font-variant-numeric:tabular-nums;font-weight:700}
+.nivel{display:inline-block;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px}
+.ok{background:#DDF1E6;color:#1F6B47}.med{background:#FCEBC9;color:#7A5410}.no{background:#F9DADB;color:#9B1C2B}
+
+/* Tipografías */
+.tipos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:20px}
+.tipo{background:var(--blanco);border:1px solid var(--linea);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+.tipo.reco{border:2px solid var(--bordo)}
+.tipo .esp{background:var(--crema);padding:22px 20px;display:grid;gap:10px;position:relative}
+.tipo .esp .h{font-size:34px;line-height:1.05;color:var(--bordo)}
+.tipo .esp .b{font-size:15.5px;color:var(--carbon)}
+.tipo .esp .acc{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tipo .info .fam{display:grid;gap:4px;font-size:14px}
+.tipo .info .fam b{font-weight:700}
+.escala{margin-top:36px;background:var(--blanco);border:1px solid var(--linea);border-radius:20px;padding:8px 20px}
+.esc{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--linea)}
+.esc:last-child{border-bottom:0}
+.esc span{font-size:12.5px;color:var(--suave);font-variant-numeric:tabular-nums}
+.esc p{min-width:0;overflow-wrap:anywhere}
+
+/* Recomendación */
+.reco-band{background:var(--rosa)}
+.reco-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px}
+.paso{background:var(--crema);border-radius:18px;padding:18px;display:grid;gap:8px;border:1px solid #EAC7C2}
+.paso b{font-family:var(--f-tit);font-size:19px;color:var(--bordo)}
+.paso p{font-size:14.5px}
+.siguiente{margin-top:26px;background:var(--bordo);color:var(--crema);border-radius:20px;padding:22px;display:grid;gap:10px}
+.siguiente h3{color:var(--crema)}
+.siguiente ol{margin:0;padding-left:20px;display:grid;gap:6px}
+footer{padding-block:28px;font-size:13px;color:var(--suave)}
+
+@media (max-width:760px){
+  .portada .wrap{grid-template-columns:1fr}
+  .pc{grid-template-columns:1fr}
+  .esc{grid-template-columns:1fr;gap:4px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<!-- Íconos reutilizables -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="hrt" viewBox="6 6 52 50"><path d="M32 54C20 44 8 34 8 22C8 14 14 8 21 8C26 8 30 11 32 15C34 11 38 8 43 8C50 8 56 14 56 22C56 34 44 44 32 54Z"/></symbol>
+    <symbol id="ic-pin" viewBox="0 0 64 64">
+      <path fill="var(--mark)" d="M32 60C22 50 7 37 7 23C7 14.5 13.5 8 21.5 8C26 8 30 10.5 32 14.5C34 10.5 38 8 42.5 8C50.5 8 57 14.5 57 23C57 37 42 50 32 60Z"/>
+      <circle cx="32" cy="26" r="7" fill="var(--hole)"/>
+    </symbol>
+    <symbol id="ic-ticket" viewBox="0 0 64 64">
+      <path fill="var(--ink)" d="M10 14H54a4 4 0 0 1 4 4V27a5 5 0 0 0 0 10V46a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4V37a5 5 0 0 0 0-10V18a4 4 0 0 1 4-4Z"/>
+      <line x1="44" y1="19" x2="44" y2="45" stroke="var(--hole)" stroke-width="2.4" stroke-dasharray="3 3"/>
+      <use href="#hrt" x="12" y="18" width="28" height="28" fill="var(--mark)"/>
+    </symbol>
+    <symbol id="ic-tazas" viewBox="0 0 64 64">
+      <use href="#hrt" x="21" y="3" width="22" height="22" fill="var(--mark)"/>
+      <g fill="var(--ink)">
+        <path d="M9 30H28V46a7 7 0 0 1-7 7H16a7 7 0 0 1-7-7Z" transform="rotate(-10 18 41)"/>
+        <path d="M36 30H55V46a7 7 0 0 1-7 7H43a7 7 0 0 1-7-7Z" transform="rotate(10 46 41)"/>
+      </g>
+      <g fill="none" stroke="var(--ink)" stroke-width="3">
+        <path d="M9.5 35a5 5 0 0 0 -1 9" transform="rotate(-10 18 41) translate(-1 0)"/>
+        <path d="M54.5 35a5 5 0 0 1 1 9" transform="rotate(10 46 41) translate(1 0)"/>
+      </g>
+    </symbol>
+    <symbol id="ic-mono" viewBox="0 0 64 64">
+      <rect x="4" y="4" width="56" height="56" rx="16" fill="var(--ink)"/>
+      <text x="31" y="42" text-anchor="middle" font-family="Outfit, system-ui, sans-serif" font-weight="700" font-size="29" fill="var(--hole)" letter-spacing="-1">mc</text>
+      <use href="#hrt" x="42" y="9" width="14" height="14" fill="var(--mark)"/>
+    </symbol>
+    <symbol id="ic-sello" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="28" fill="none" stroke="var(--ink)" stroke-width="3"/>
+      <circle cx="32" cy="32" r="21" fill="none" stroke="var(--ink)" stroke-width="1.6" stroke-dasharray="2.5 3"/>
+      <use href="#hrt" x="17" y="16" width="30" height="30" fill="var(--mark)"/>
+    </symbol>
+    <symbol id="ic-firma" viewBox="0 0 64 64">
+      <text x="30" y="47" text-anchor="middle" font-family="Pacifico, cursive" font-size="38" fill="var(--ink)">m</text>
+      <use href="#hrt" x="40" y="6" width="18" height="18" fill="var(--mark)"/>
+    </symbol>
+    <path id="pinhrt" d="M32 60C22 50 7 37 7 23C7 14.5 13.5 8 21.5 8C26 8 30 10.5 32 14.5C34 10.5 38 8 42.5 8C50.5 8 57 14.5 57 23C57 37 42 50 32 60Z"/>
+    <path id="gota" d="M0 0C-8 -10 -15 -19 -15 -27A15 15 0 0 1 15 -27C15 -19 8 -10 0 0Z"/>
+    <symbol id="v-clasico" viewBox="0 0 64 64">
+      <use href="#pinhrt" fill="var(--mark)"/><circle cx="32" cy="26" r="7" fill="var(--hole)"/>
+    </symbol>
+    <symbol id="v-taza" viewBox="0 0 64 64">
+      <use href="#pinhrt" fill="var(--mark)"/>
+      <path d="M23.5 22H37.5V28.5a5.5 5.5 0 0 1-5.5 5.5h-3a5.5 5.5 0 0 1-5.5-5.5Z" fill="var(--hole)"/>
+      <path d="M37.5 24.2a3.4 3.4 0 0 1 0 6.8" fill="none" stroke="var(--hole)" stroke-width="2.2"/>
+      <path d="M28 19.5q-1.6-2.2 0-4.4M33 19.5q-1.6-2.2 0-4.4" fill="none" stroke="var(--hole)" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="v-encuentro" viewBox="0 0 64 64">
+      <g transform="translate(32 55)">
+        <use href="#gota" transform="rotate(-32)" fill="var(--mark)"/>
+        <use href="#gota" transform="rotate(32)" fill="var(--ink)"/>
+        <circle cx="-14.3" cy="-22.9" r="5.5" fill="var(--hole)"/>
+        <circle cx="14.3" cy="-22.9" r="5.5" fill="var(--hole)"/>
+      </g>
+    </symbol>
+    <symbol id="v-hueco" viewBox="0 0 64 64">
+      <path d="M32 60C24 49 12 38 12 25A20 20 0 0 1 52 25C52 38 40 49 32 60Z" fill="var(--mark)"/>
+      <use href="#hrt" x="21" y="14" width="22" height="22" fill="var(--hole)"/>
+    </symbol>
+    <symbol id="v-camino" viewBox="0 0 64 64">
+      <g transform="translate(9 0) scale(.86)"><use href="#pinhrt" fill="none" stroke="var(--mark)" stroke-width="5" stroke-linejoin="round"/><circle cx="32" cy="26" r="6.5" fill="var(--mark)"/></g>
+      <path d="M2 44C4 56 14 60 26 52" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linecap="round" stroke-dasharray=".1 6"/>
+    </symbol>
+    <symbol id="v-anillo" viewBox="0 0 64 64">
+      <use href="#pinhrt" fill="var(--mark)"/>
+      <circle cx="32" cy="28" r="6.5" fill="none" stroke="var(--hole)" stroke-width="3"/>
+      <path d="M32 15.5l3.6 3.6-3.6 3.6-3.6-3.6Z" fill="var(--hole)"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="portada">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow" style="color:var(--rosa)">Tablero de identidad · Opciones para elegir</p>
+      <h1>Mi Cita Ideal, <em>del primer café al sí, acepto</em></h1>
+      <p>Seis caminos de logo, la paleta bordo, rojo, rosa, crema y blanco con tres variantes, y tres combinaciones de tipografías. Cada opción está puntuada con los cuatro criterios de la marca.</p>
+      <p class="mano">Elegí con el corazón… y con el celular en la mano.</p>
+    </div>
+    <div class="crit" aria-label="Criterios">
+      <div><b>Llamativo</b><span>Frena el dedo en Instagram y se reconoce en un segundo.</span></div>
+      <div><b>Cercano y confiable</b><span>Se siente como un amigo que te ayuda, no como una app fría.</span></div>
+      <div><b>Divertido</b><span>Tiene juego, guiño y ganas de compartirlo.</span></div>
+      <div><b>Profesional</b><span>Aguanta una tapa de ebook, un anuncio y un checkout.</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section style="background:var(--blanco)">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Nuevo · Ronda 2</p>
+      <h2>Variantes del Pin-corazón</h2>
+      <p>La misma idea de la opción A con seis detalles distintos. Sumamos una línea más para cada una: qué tanto se parece a los íconos de stock. Cuanto más se parece, más difícil es registrarla y defenderla.</p>
+    </div>
+    <div class="fondos" role="group" aria-label="Fondo de las variantes">
+      <span>Fondo:</span>
+      <button class="chip" id="vf-crema" data-f="crema" data-g="variantesA" aria-pressed="true"><i style="background:var(--crema)"></i>Crema</button>
+      <button class="chip" id="vf-blanco" data-f="blanco" data-g="variantesA" aria-pressed="false"><i style="background:#fff"></i>Blanco</button>
+      <button class="chip" id="vf-rosa" data-f="rosa" data-g="variantesA" aria-pressed="false"><i style="background:var(--rosa)"></i>Rosa</button>
+      <button class="chip" id="vf-bordo" data-f="bordo" data-g="variantesA" aria-pressed="false"><i style="background:var(--bordo)"></i>Bordo</button>
+    </div>
+    <div class="logos f-crema" id="variantesA"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Chequeo de marca · 19 de noviembre de 2026</p>
+      <h2>¿Alguien ya lo usa?</h2>
+      <p>Búsqueda hecha en el registro oficial del INPI Argentina, en la base mundial de marcas de la OMPI (89 oficinas), en la web, en redes y en bancos de íconos. No reemplaza el informe de un agente de la propiedad industrial: es el filtro previo para no invertir en algo ocupado.</p>
+    </div>
+    <div class="reco-grid">
+      <div class="paso" style="background:var(--blanco);border-color:var(--linea)"><span class="nivel ok" style="justify-self:start">Libre</span><b>El nombre "Mi Cita Ideal"</b><p>INPI: sin resultados para "Cita Ideal", "Mi Cita", "Cita Perfecta", "Citas Ideales", "Cita Soñada" ni "Ideal Date". OMPI: sin resultados exactos para "Mi Cita Ideal", "Cita Ideal" ni "My Ideal Date".</p></div>
+      <div class="paso" style="background:var(--blanco);border-color:var(--linea)"><span class="nivel med" style="justify-self:start">A tener en cuenta</span><b>Marcas parecidas en el rubro</b><p>Comparten solo la palabra "citas": Primeras Citas (programa de TV, clase 41), Citas Ya, Argencitas, Zonacitas, Super Like Citas y Opencitas (clase 45). En España: La Primera Cita y Cita con tus deseos (en trámite).</p></div>
+      <div class="paso" style="background:var(--blanco);border-color:var(--linea)"><span class="nivel med" style="justify-self:start">Uso común</span><b>En la web y redes</b><p>"Mi cita ideal" es una frase que mucha gente usa en posteos. Hay una canción con ese título (octubre de 2026) y una colección de remeras en España. No encontramos otro negocio de citas, ebooks o apps con ese nombre.</p></div>
+      <div class="paso" style="background:var(--blanco);border-color:var(--linea)"><span class="nivel no" style="justify-self:start">Débil</span><b>El corazón con forma de pin</b><p>Es un ícono muy repetido en bancos de imágenes (Flaticon, Adobe Stock, Shutterstock, Vecteezy, Freepik). El A clásico se puede usar, pero es difícil de registrar solo y de defender. Por eso las variantes con detalle propio.</p></div>
+    </div>
+    <div class="contraste" style="margin-top:22px">
+      <div style="padding:18px 20px 6px"><h3 style="color:var(--bordo)">Qué conviene registrar y cuánto sale</h3>
+      <p style="color:var(--suave);font-size:14.5px;margin-top:6px">En Argentina el nombre y el logo se <b>registran como marca</b> en el INPI (Ley 22.362); la patente es para inventos. Lo más fuerte es una <b>marca mixta</b>: el ícono elegido + "Mi Cita Ideal" juntos. Aranceles oficiales del INPI consultados hoy.</p></div>
+      <div class="tabla-scroll"><table><thead><tr><th>Clase</th><th>Qué protege</th><th>Arancel INPI</th></tr></thead><tbody>
+        <tr><td><b>9</b></td><td>Ebooks descargables y la app</td><td class="ratio">$ 42.043</td></tr>
+        <tr><td><b>16</b></td><td>Libros y guías impresas, pasaporte de citas</td><td class="ratio">$ 42.043</td></tr>
+        <tr><td><b>41</b></td><td>Publicaciones electrónicas, contenido y talleres</td><td class="ratio">$ 42.043</td></tr>
+        <tr><td><b>45</b></td><td>Servicios relacionados con citas y relaciones</td><td class="ratio">$ 42.043</td></tr>
+        <tr><td>Opcional · 35</td><td>Venta en línea y publicidad</td><td class="ratio">$ 42.043</td></tr>
+        <tr><td colspan="2"><b>Total recomendado (4 clases)</b></td><td class="ratio">$ 168.172</td></tr>
+        <tr><td colspan="2">Búsqueda fonética oficial del INPI (opcional, antes de presentar)</td><td class="ratio">$ 36.997,84</td></tr>
+      </tbody></table></div>
+      <p style="padding:12px 20px 18px;font-size:13.5px;color:var(--suave)">Pendiente: el INPI no tiene buscador público por imagen y la OMPI pide subir el logo en su web. Esa búsqueda se hace con el logo final dibujado, antes de presentar. Conviene que un agente de la propiedad industrial confirme las clases y el texto de la solicitud.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">01 · Logo · Ronda 1</p>
+      <h2>Seis opciones de logo</h2>
+      <p>Cambiá el fondo para ver cómo se comporta cada uno. Abajo de cada logo está cómo se ve chiquito: como foto de perfil de Instagram y como ícono de la pestaña del navegador, que es donde más se ve.</p>
+    </div>
+    <div class="fondos" role="group" aria-label="Fondo de los logos">
+      <span>Fondo:</span>
+      <button class="chip" id="fondo-crema" data-f="crema" aria-pressed="true"><i style="background:var(--crema)"></i>Crema</button>
+      <button class="chip" id="fondo-blanco" data-f="blanco" aria-pressed="false"><i style="background:#fff"></i>Blanco</button>
+      <button class="chip" id="fondo-rosa" data-f="rosa" aria-pressed="false"><i style="background:var(--rosa)"></i>Rosa</button>
+      <button class="chip" id="fondo-bordo" data-f="bordo" aria-pressed="false"><i style="background:var(--bordo)"></i>Bordo</button>
+    </div>
+    <div class="logos f-crema" id="logos"></div>
+  </div>
+</section>
+
+<section style="background:var(--blanco)">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">02 · Paleta</p>
+      <h2>Paleta principal</h2>
+      <p>Son los colores que te gustan, ordenados por función. Sumamos un rojo más profundo para textos chicos y botones, porque el coral solo no alcanza el contraste mínimo de lectura con letra blanca y pequeña.</p>
+    </div>
+    <div class="paleta" id="paleta"></div>
+    <div class="proporcion" aria-label="Proporción de uso">
+      <div style="flex:45;background:var(--crema);color:var(--bordo)">Crema y blanco 45%</div>
+      <div style="flex:25;background:var(--bordo);color:var(--crema)">Bordo 25%</div>
+      <div style="flex:15;background:var(--rosa);color:var(--bordo)">Rosa 15%</div>
+      <div style="flex:10;background:var(--rojo);color:#fff">Rojo 10%</div>
+      <div style="flex:5;background:var(--dorado);color:var(--carbon)">5%</div>
+    </div>
+    <p class="leyenda">Regla 60-30-10 adaptada: fondos claros que respiran, bordo que da identidad, rojo solo donde hay que hacer clic. El dorado queda para detalles premium (Colección completa, propuestas).</p>
+
+    <div class="sec-head" style="margin-top:44px;margin-bottom:0">
+      <h3 style="color:var(--bordo)">Tres variantes de la misma familia</h3>
+      <p>Mismos colores, distinta temperatura. La clásica es la de hoy; las otras dos sirven si querés que la marca grite un poco más o susurre un poco más.</p>
+    </div>
+    <div class="variantes" id="variantes"></div>
+
+    <div class="contraste">
+      <div style="padding:18px 20px 6px"><h3 style="color:var(--bordo)">¿Se lee bien?</h3><p style="color:var(--suave);font-size:14.5px;margin-top:6px">Contraste calculado con la fórmula WCAG. AA es el mínimo para texto normal (4,5:1); para títulos grandes alcanza 3:1.</p></div>
+      <div class="tabla-scroll"><table><thead><tr><th>Combinación</th><th>Contraste</th><th>Resultado</th><th>Usalo para</th></tr></thead><tbody id="contraste"></tbody></table></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">03 · Tipografías</p>
+      <h2>Tres combinaciones de letras</h2>
+      <p>Todas son gratuitas de Google Fonts, sirven para la web, los ebooks y Canva, y tienen acentos y eñe.</p>
+    </div>
+    <div class="tipos" id="tipos"></div>
+
+    <div class="escala">
+      <div class="esc"><span>Título grande · 48</span><p style="font-family:var(--f-tit);font-size:clamp(32px,5vw,48px);font-weight:650;color:var(--bordo);line-height:1.05">Ustedes ponen las ganas</p></div>
+      <div class="esc"><span>Subtítulo · 30</span><p style="font-family:var(--f-tit);font-size:30px;font-weight:600;color:var(--bordo);line-height:1.1">Picnic al atardecer</p></div>
+      <div class="esc"><span>Título de ficha · 22</span><p style="font-family:var(--f-tit);font-size:22px;font-weight:600">Cocinen juntos una receta de la infancia</p></div>
+      <div class="esc"><span>Texto · 17</span><p style="font-size:17px">Una manta, algo rico para picar y una playlist que arman entre los dos. Te lleva dos horas y cuesta poco.</p></div>
+      <div class="esc"><span>Detalle · 13</span><p style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--rojo-a)">Presupuesto bajo · Al aire libre</p></div>
+      <div class="esc"><span>Nota a mano · 26</span><p class="mano" style="font-size:26px">¡Sello número 5! Te ganaste un premio</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="reco-band">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">04 · Nuestra recomendación</p>
+      <h2>Un sistema, no un solo logo</h2>
+      <p>Las marcas cercanas que se ven profesionales usan un logo principal sobrio y piezas secundarias con más juego. Así queda la propuesta, sujeta a tu elección.</p>
+    </div>
+    <div class="reco-grid">
+      <div class="paso"><b>Logo principal: A3 · El encuentro</b><p>Mantiene la idea del Pin-corazón, es el más original de las variantes y el más fácil de registrar. Alternativa: A2 · Pin con taza.</p></div>
+      <div class="paso"><b>Secundarios: B · Entrada y E · Sello</b><p>La entrada para la web, los anuncios y las fichas. El sello para el pasaporte, los stickers y las tapas.</p></div>
+      <div class="paso"><b>Paleta clásica + rojo profundo</b><p>Bordo, rojo, rosa, crema y blanco como hoy, con #C8323F para botones y textos chicos.</p></div>
+      <div class="paso"><b>Fraunces + DM Sans + Caveat</b><p>Títulos más cálidos que Playfair, el mismo texto de la web y una letra a mano para los guiños.</p></div>
+    </div>
+    <div class="siguiente">
+      <h3>Cómo seguimos</h3>
+      <ol>
+        <li>Elegí la variante del Pin-corazón y la combinación de letras.</li>
+        <li>Con el logo final dibujado, hacemos la búsqueda por imagen en la OMPI y presentamos la marca mixta en el INPI (idealmente con un agente de la propiedad industrial).</li>
+        <li>El agente disenador-grafico dibuja la versión final en vector: completa, ícono, monocromo y tamaños para Instagram, favicon y tapas.</li>
+        <li>Actualizamos docs/marca.md y la web con lo elegido, y lo revisamos en compu y celular antes de publicar.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+</main>
+<footer><div class="wrap">Mi Cita Ideal · Tablero de identidad v1 · 19 de noviembre de 2026 · Bocetos de dirección: el logo final se redibuja en vector antes de usarlo.</div></footer>
+
+<script>
+const crit=["Llamativo","Cercano","Divertido","Profesional"];
+const logos=[
+ {k:"A",n:"Pin-corazón",reco:true,ic:"ic-pin",wm:'<span style="font-family:Fraunces,Georgia,serif;font-weight:650;font-size:34px;letter-spacing:-.5px">Mi Cita Ideal</span><small>del primer café al sí, acepto</small>',
+  d:"El corazón que también es un pin de ubicación. Dice “amor” y “a dónde vamos” en un solo dibujo. Es la evolución del logo actual.",s:[4,4,3,5],
+  mas:"Se lee perfecto chiquito. Sirve para todo. Fácil de recordar.",menos:"Corazón + pin existe en otras apps: hay que cuidarlo con la letra y el color."},
+ {k:"B",n:"La entrada",ic:"ic-ticket",ticket:true,
+  d:"Una entrada de cine para dos. Ya aparece en la web (“Admite 2”) y convierte cada cita en un plan con boleto.",s:[5,4,5,4],
+  mas:"Muy propio, divertido y coleccionable. Encaja con fichas y pasaporte.",menos:"Es ancho: como foto de perfil usa solo el ícono."},
+ {k:"C",n:"Dos tazas",ic:"ic-tazas",wm:'<span style="font-family:Fraunces,Georgia,serif;font-style:italic;font-weight:600;font-size:34px">Mi Cita Ideal</span><small>del primer café al sí, acepto</small>',
+  d:"Dos tazas que brindan y un corazón que sale como vapor. Es literalmente el “primer café” del eslogan.",s:[3,5,4,4],
+  mas:"El más cálido y familiar. Cuenta una historia.",menos:"Menos llamativo y las tazas pierden detalle a 16 px."},
+ {k:"D",n:"Monograma mc",ic:"ic-mono",wm:'<span style="font-family:Outfit,system-ui,sans-serif;font-weight:600;font-size:32px;letter-spacing:-.5px">Mi Cita Ideal</span><small>ideas listas para cada cita</small>',
+  d:"Un ícono tipo app con las iniciales y un corazón en la esquina. Pensado para cuando llegue la app.",s:[3,3,2,5],
+  mas:"Muy profesional y perfecto como ícono de app.",menos:"El más frío: se parece a muchas startups."},
+ {k:"E",n:"El sello",ic:"ic-sello",sello:true,
+  d:"Un sello de pasaporte con el eslogan alrededor. Conecta con el pasaporte de citas: cada cita, un sello.",s:[4,4,4,4],
+  mas:"Ideal para stickers, tapas, packaging y el pasaporte.",menos:"El texto en círculo no se lee chiquito: como perfil va el ícono."},
+ {k:"F",n:"La firma",ic:"ic-firma",wm:'<span style="font-family:Pacifico,cursive;font-size:32px;line-height:1.3">Mi Cita Ideal</span><small>del primer café al sí, acepto</small>',
+  d:"Escrito a mano, como una nota que dejás en la heladera. Lo más juguetón de las seis.",s:[4,5,5,3],
+  mas:"Súper cercano, se siente humano y simpático.",menos:"Puede verse informal en una tapa o en el checkout."}
+];
+const sello=`<svg width="190" height="190" viewBox="0 0 200 200" role="img" aria-label="Sello Mi Cita Ideal" style="transform:rotate(-8deg)">
+ <defs><path id="circ" d="M100 100 m-74 0 a74 74 0 1 1 148 0 a74 74 0 1 1 -148 0"/></defs>
+ <circle cx="100" cy="100" r="94" fill="none" stroke="var(--ink)" stroke-width="4"/>
+ <circle cx="100" cy="100" r="60" fill="none" stroke="var(--ink)" stroke-width="1.6" stroke-dasharray="3 4"/>
+ <text font-family="DM Sans, sans-serif" font-weight="700" font-size="14.5" letter-spacing="3.2" fill="var(--ink)"><textPath href="#circ" startOffset="0">DEL PRIMER CAFÉ AL SÍ, ACEPTO · DEL PRIMER CAFÉ ·</textPath></text>
+ <use href="#hrt" x="78" y="52" width="44" height="44" fill="var(--mark)"/>
+ <text x="100" y="118" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="650" font-size="21" fill="var(--ink)">Mi Cita</text>
+ <text x="100" y="140" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-weight="500" font-size="21" fill="var(--ink)">Ideal</text>
+</svg>`;
+const ticket=`<div class="ticket" role="img" aria-label="Entrada Mi Cita Ideal"><div class="main"><small>Entrada · Cita n.º 001</small><span>Mi Cita Ideal</span><small>del primer café al sí, acepto</small></div><div class="stub">Admite<b>2</b></div></div>`;
+const ic=(id,s)=>`<svg width="${s}" height="${s}" aria-hidden="true"><use href="#${id}"/></svg>`;
+document.getElementById("logos").innerHTML=logos.map(l=>`
+ <article class="logo-card${l.reco?" reco":""}">
+  <div class="escena">${l.reco?'<span class="badge-reco">Recomendado</span>':""}
+   ${l.ticket?ticket:l.sello?sello:`<div class="lockup">${ic(l.ic,64)}<div class="wm">${l.wm}</div></div>`}
+  </div>
+  <div class="info">
+   <div class="tit"><h3>${l.n}</h3><span class="letra">Opción ${l.k}</span></div>
+   <p>${l.d}</p>
+   <div class="mini"><figure><div class="avatar">${ic(l.ic,38)}</div><figcaption>Perfil de IG</figcaption></figure>
+     <figure><div class="fav">${ic(l.ic,16)}<span>Mi Cita Ideal</span></div><figcaption>Pestaña · 16 px</figcaption></figure>
+     <figure><div class="fav" style="padding:8px 12px">${ic(l.ic,32)}</div><figcaption>32 px</figcaption></figure></div>
+   <div class="barras">${l.s.map((v,i)=>`<div class="barra"><span>${crit[i]}</span><div class="pista"><b style="width:${v*20}%"></b></div><em>${v}</em></div>`).join("")}</div>
+   <div class="pc"><div class="mas"><strong>A favor</strong>${l.mas}</div><div class="menos"><strong>Cuidado</strong>${l.menos}</div></div>
+  </div>
+ </article>`).join("");
+
+const riesgo={Alto:"no",Medio:"med",Bajo:"ok"};
+const varA=[
+ {k:"A1",n:"Clásico",ic:"v-clasico",d:"El corazón-pin con un punto en el centro. Es la opción A tal cual.",s:[4,4,3,5],r:"Alto",
+  mas:"Simple, se entiende al instante.",menos:"Es casi igual a muchos íconos gratuitos de internet."},
+ {k:"A2",n:"Pin con taza",ic:"v-taza",d:"El hueco del pin es una tacita con vapor. Suma el “primer café” que te gustó, sin limitar la marca a cafés.",s:[4,5,4,5],r:"Medio",
+  mas:"Cálido, propio y conecta con el eslogan.",menos:"La taza se pierde a 16 px: ahí se ve como el clásico."},
+ {k:"A3",n:"El encuentro",ic:"v-encuentro",reco:true,d:"Dos pines que se inclinan uno hacia el otro y forman un corazón. Dos personas, dos lugares, una cita.",s:[5,5,4,5],r:"Bajo",
+  mas:"El más original y registrable. Cuenta la historia completa.",menos:"Hay que cuidar que las dos gotas se lean como pines y no como pétalos."},
+ {k:"A4",n:"Pin con hueco corazón",ic:"v-hueco",d:"Al revés: un pin de mapa redondo con el corazón calado adentro.",s:[3,4,3,5],r:"Alto",
+  mas:"Muy claro como “lugar romántico”.",menos:"Es el ícono de stock más repetido de todos."},
+ {k:"A5",n:"El camino",ic:"v-camino",d:"Corazón-pin de línea y un caminito de puntos que llega a él: de dónde salen a dónde van.",s:[3,4,4,4],r:"Medio",
+  mas:"Liviano, moderno, cuenta un recorrido.",menos:"Las líneas finas pierden fuerza en pantallas chicas."},
+ {k:"A6",n:"Sí, acepto",ic:"v-anillo",d:"El hueco es un anillo con un diamante. Habla del final del recorrido: del primer café al sí, acepto.",s:[4,4,3,5],r:"Medio",
+  mas:"Emotivo y muy fuerte para El momento perfecto.",menos:"Puede asustar a quien recién conoce a alguien."}
+];
+document.getElementById("variantesA").innerHTML=varA.map(l=>`
+ <article class="logo-card${l.reco?" reco":""}">
+  <div class="escena">${l.reco?'<span class="badge-reco">Recomendado</span>':""}
+   <div class="lockup">${ic(l.ic,68)}<div class="wm"><span style="font-family:Fraunces,Georgia,serif;font-weight:650;font-size:32px;letter-spacing:-.5px">Mi Cita Ideal</span><small>del primer café al sí, acepto</small></div></div>
+  </div>
+  <div class="info">
+   <div class="tit"><h3>${l.n}</h3><span class="letra">${l.k}</span></div>
+   <p>${l.d}</p>
+   <div class="mini"><figure><div class="avatar">${ic(l.ic,38)}</div><figcaption>Perfil de IG</figcaption></figure>
+     <figure><div class="fav">${ic(l.ic,16)}<span>Mi Cita Ideal</span></div><figcaption>Pestaña · 16 px</figcaption></figure>
+     <figure><div class="fav" style="padding:8px 12px">${ic(l.ic,32)}</div><figcaption>32 px</figcaption></figure>
+     <figure><span class="nivel ${riesgo[l.r]}">Parecido al stock: ${l.r}</span></figure></div>
+   <div class="barras">${l.s.map((v,i)=>`<div class="barra"><span>${crit[i]}</span><div class="pista"><b style="width:${v*20}%"></b></div><em>${v}</em></div>`).join("")}</div>
+   <div class="pc"><div class="mas"><strong>A favor</strong>${l.mas}</div><div class="menos"><strong>Cuidado</strong>${l.menos}</div></div>
+  </div>
+ </article>`).join("");
+
+document.querySelectorAll(".chip").forEach(b=>b.addEventListener("click",()=>{
+  const gid=b.dataset.g||"logos";
+  document.querySelectorAll(`.chip[data-g="${gid}"],.chip${gid==="logos"?":not([data-g])":"[data-g='__']"}`).forEach(x=>x.setAttribute("aria-pressed",x===b));
+  const g=document.getElementById(gid); g.className="logos f-"+b.dataset.f;
+}));
+
+const pal=[
+ ["Bordo","#7A1F3D","Identidad, títulos, fondos fuertes","#FFF8F1"],
+ ["Rojo coral","#E8505B","Corazón, acentos, botones grandes","#FFFFFF"],
+ ["Rojo profundo","#C8323F","Botones y textos chicos en rojo","#FFFFFF"],
+ ["Rosa empolvado","#F6D6D3","Tarjetas, fondos de sección","#7A1F3D"],
+ ["Crema","#FFF8F1","Fondo principal","#7A1F3D"],
+ ["Blanco","#FFFFFF","Tarjetas sobre crema, aire","#7A1F3D"],
+ ["Dorado suave","#C9A35B","Solo detalles premium","#2A2326"],
+ ["Carbón","#2A2326","Texto largo","#FFF8F1"]
+];
+const rgb=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));
+document.getElementById("paleta").innerHTML=pal.map(([n,h,u,t])=>`
+ <div class="sw"><div class="c" style="background:${h};color:${t};${h==="#FFFFFF"?"border-bottom:1px solid var(--linea)":""}">${n}</div>
+ <div class="d"><code>${h}</code><span>RGB ${rgb(h).join(", ")}</span><span>${u}</span><button class="copiar" id="cp-${h.slice(1)}" data-h="${h}">Copiar código</button></div></div>`).join("");
+document.getElementById("paleta").addEventListener("click",e=>{
+  const b=e.target.closest(".copiar"); if(!b) return;
+  const done=()=>{b.textContent="Copiado ✓";setTimeout(()=>b.textContent="Copiar código",1400)};
+  try{navigator.clipboard.writeText(b.dataset.h).then(done,()=>{b.textContent=b.dataset.h})}catch(_){b.textContent=b.dataset.h}
+});
+
+const vars=[
+ {n:"Clásica",d:"La actual. Elegante y romántica, con el bordo como protagonista.",c:["#7A1F3D","#E8505B","#F6D6D3","#FFF8F1","#FFFFFF"],reco:true},
+ {n:"Vibrante",d:"Más rojo y más contraste. Ideal para anuncios y San Valentín.",c:["#6B1232","#E23B4E","#FAD0D4","#FFF6EC","#FFFFFF"]},
+ {n:"Suave",d:"Más rosada y liviana. Para un tono íntimo y de regalo.",c:["#8A2E4A","#EF6F6C","#F8E1DC","#FFFAF4","#FFFFFF"]}
+];
+document.getElementById("variantes").innerHTML=vars.map(v=>`
+ <div class="var" style="${v.reco?"border:2px solid var(--bordo)":""}">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><h3 style="color:${v.c[0]}">${v.n}</h3>${v.reco?'<span class="nivel ok">Recomendada</span>':""}</div>
+  <p style="font-size:14px;color:var(--suave)">${v.d}</p>
+  <div class="tira">${v.c.map(c=>`<div style="background:${c};${c==="#FFFFFF"?"box-shadow:inset 0 0 0 1px #eee":""}"></div>`).join("")}</div>
+  <div class="demo" style="background:${v.c[3]}">
+   <h4 style="color:${v.c[0]}">Picnic al atardecer</h4>
+   <p style="color:#2A2326">Una manta, algo rico y una playlist entre los dos.</p>
+   <div class="acc"><button class="btn" style="background:${v.c[0]};color:${v.c[3]}">Armar nuestra cita</button><span class="tag" style="background:${v.c[2]};color:${v.c[0]}">Modo ahorro</span><span style="color:${v.c[1]};font-size:22px" aria-hidden="true">♥</span></div>
+  </div>
+  <div class="hex">${v.c.map(c=>`<span>${c}</span>`).join("")}</div>
+ </div>`).join("");
+
+const lum=h=>{const [r,g,b]=rgb(h).map(v=>{v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)});return .2126*r+.7152*g+.0722*b};
+const ratio=(a,b)=>{const [x,y]=[lum(a),lum(b)].sort((p,q)=>q-p);return (x+.05)/(y+.05)};
+const pares=[
+ ["Crema sobre bordo","#FFF8F1","#7A1F3D","Títulos, textos y botones sobre bordo"],
+ ["Bordo sobre rosa","#7A1F3D","#F6D6D3","Etiquetas y tarjetas"],
+ ["Carbón sobre crema","#2A2326","#FFF8F1","Texto largo de la web y ebooks"],
+ ["Bordo sobre crema","#7A1F3D","#FFF8F1","Títulos y links"],
+ ["Blanco sobre rojo profundo","#FFFFFF","#C8323F","Botones con texto chico"],
+ ["Blanco sobre rojo coral","#FFFFFF","#E8505B","Solo botones grandes y en negrita"],
+ ["Dorado sobre bordo","#C9A35B","#7A1F3D","Detalles y títulos grandes"],
+ ["Dorado sobre crema","#C9A35B","#FFF8F1","Solo adornos, nunca texto"]
+];
+document.getElementById("contraste").innerHTML=pares.map(([n,f,b,u])=>{const r=ratio(f,b);const [c,t]=r>=7?["ok","AAA"]:r>=4.5?["ok","AA"]:r>=3?["med","Solo grande"]:["no","Solo adorno"];
+ return `<tr><td><span class="muestra" style="color:${f};background:${b}">${n}</span></td><td class="ratio">${r.toFixed(1).replace(".",",")}:1</td><td><span class="nivel ${c}">${t}</span></td><td>${u}</td></tr>`}).join("");
+
+const tipos=[
+ {n:"Romántica clásica",t:"Playfair Display",tf:"'Playfair Display',Georgia,serif",tw:700,b:"DM Sans",a:null,d:"La de hoy. Elegante, de revista y casamiento. Muy linda en tapas; un poco seria para memes y reels.",s:[4,3,2,5]},
+ {n:"Cálida y simpática",reco:true,t:"Fraunces",tf:"Fraunces,Georgia,serif",tw:650,b:"DM Sans",a:"Caveat",d:"Una serif con curvas suaves, más amable que Playfair, con el mismo texto de la web y una letra a mano para los guiños.",s:[5,5,4,5]},
+ {n:"Moderna y divertida",t:"Bricolage Grotesque",tf:"'Bricolage Grotesque',system-ui,sans-serif",tw:750,b:"Outfit",bf:"Outfit,system-ui,sans-serif",a:null,d:"Sin serifas, con carácter y aire joven. Muy buena para reels y anuncios; menos romántica.",s:[5,4,5,4]}
+];
+document.getElementById("tipos").innerHTML=tipos.map(t=>`
+ <article class="tipo${t.reco?" reco":""}">
+  <div class="esp">${t.reco?'<span class="badge-reco" style="position:static;justify-self:start">Recomendada</span>':""}
+   <p class="h" style="font-family:${t.tf};font-weight:${t.tw}">Del primer café al sí, acepto</p>
+   <p class="b" style="font-family:${t.bf||"var(--f-txt)"}">Contanos cómo son y te armamos hasta 10 citas listas para usar, con qué decir y qué preguntar en cada una.</p>
+   <div class="acc"><button class="btn" style="background:var(--bordo);color:var(--crema);font-family:${t.bf||"var(--f-txt)"}">Armar nuestra cita</button>${t.a?'<span class="mano">¡qué planazo!</span>':'<span class="tag" style="background:var(--rosa);color:var(--bordo);font-family:'+(t.bf||"var(--f-txt)")+'">Primera cita</span>'}</div>
+  </div>
+  <div class="info">
+   <h3>${t.n}</h3>
+   <div class="fam"><span><b>Títulos:</b> ${t.t}</span><span><b>Texto:</b> ${t.b}</span>${t.a?`<span><b>Acento a mano:</b> ${t.a}</span>`:""}</div>
+   <p>${t.d}</p>
+   <div class="barras">${t.s.map((v,i)=>`<div class="barra"><span>${crit[i]}</span><div class="pista"><b style="width:${v*20}%"></b></div><em>${v}</em></div>`).join("")}</div>
+  </div>
+ </article>`).join("");
+</script>
