@@ -35,8 +35,27 @@ Plan completo: https://claude.ai/artifact/67qKvLCEDrFfXmcHkJENEu
 | Dorado suave | #C9A35B | Detalles premium (propuestas, Colección) |
 | Carbón | #2A2326 | Texto |
 
-Tipografías: Playfair Display (títulos) y DM Sans (texto), ambas de Google Fonts.
-Logo: corazón que también es un pin de ubicación + "Mi Cita Ideal" en Playfair Display.
+Tipografías: Playfair Display (títulos) y DM Sans (texto), ambas de Google Fonts. Propuesta pendiente de aprobar para títulos: Fraunces (ya se usa en el logo) + Caveat como letra a mano.
+Rojo profundo #C8323F para botones y textos chicos en rojo (el coral con letra blanca chica no alcanza el contraste mínimo).
+
+## Logo y sistema de líneas (aprobado 20/11/2026)
+
+Archivos finales en `docs/identidad/logo/` (textos convertidos a trazos; vista general en `docs/identidad/logo/index.html`).
+
+- **Logo principal: "El encuentro"**: dos pines de ubicación que se inclinan uno hacia el otro y forman un corazón (pin izquierdo rojo coral, derecho bordo; en negativo, coral y crema). "Mi Cita Ideal" en Fraunces 600 + "DEL PRIMER CAFÉ AL SÍ, ACEPTO" en DM Sans 700 espaciado.
+  - Versiones: horizontal, vertical, negativo, monocromo bordo y crema (con línea de separación entre pines), ícono, favicon y avatar de Instagram.
+  - Uso: marca, web, app, redes, tapas de la colección y todo lo que no tenga una línea propia.
+- **Líneas** (el ícono acompaña el nombre de la línea en Fraunces itálica + "MI CITA IDEAL"):
+
+| Línea | Ícono | Para qué |
+| --- | --- | --- |
+| Café de por medio | Dos tazas que brindan + corazón de vapor | Eventos y citas de café; ebook para parejas que ya no saben qué hacer y quieren salir de la rutina |
+| Planes de viaje | Barrilete en forma de corazón con cola de moños | Escapadas, viajes y planes de viaje en pareja |
+| Sí, acepto | Corazón-pin con anillo | Ebooks y fichas de propuestas: cómo pedir noviazgo, compromiso o casamiento (El momento perfecto) |
+| La Entrada | Ticket con corazón | Cine, teatro, recitales y shows |
+| Cartas con sello | Sello circular con corazón | Sección "Escribí tu carta"; el **sello de firma** (`lineas/sello-firma-carta.svg`) va en la firma de cada carta |
+
+- Registro: presentar como **marca mixta** (ícono El encuentro + "Mi Cita Ideal") en clases 9, 16, 41 y 45. Ver `docs/identidad/informe-marca-2026-11-19.md`.
 
 ## Productos y precios sugeridos (a validar)
 

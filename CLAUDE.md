@@ -63,7 +63,10 @@ El agente `cerebro` acompaña a todos: responde dudas con respaldo, revisa que l
 | `director-luz-detalle` | Iluminación, encuadre, ambiente, briefs de escena y control fino de detalles | editor-foto-video, experto-prompts, disenador-grafico |
 | `experto-prompts` | Prompts de imagen, video, texto, app y agentes → `prompts/` | todos |
 | `investigador-marcas` | Antecedentes de nombre y logo (INPI, OMPI, web), clases y trámite de registro → `docs/identidad/` | disenador-grafico, estratega-marketing |
+| `escritor-cartas` | Plantillas, disparadores y cartas de ejemplo de la línea "Cartas con sello"; textos de la sección "Escribí tu carta" → `contenido/cartas/` | cerebro, creador-ugc, dev-app |
 | `administrador-tokens` | Modelo justo por agente, auditoría de gasto, costo de IA en la app → `reportes/tokens.md` | todos |
+
+Logo y líneas de la marca: ver "Logo y sistema de líneas" en `docs/marca.md`. Archivos finales en `docs/identidad/logo/`.
 
 Flujo de una pieza: `estratega-marketing` pide → `copywriter-ventas` define el mensaje → `creador-ugc` lo lleva a lenguaje real → `director-luz-detalle` + `experto-prompts` preparan la escena → `editor-foto-video` / `disenador-grafico` producen → `editor-calidad` y `cerebro` revisan → aprueba Lucas.
 

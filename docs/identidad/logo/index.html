@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kit de logos · Mi Cita Ideal</title>
+<style>
+body{margin:0;background:#FFF8F1;color:#2A2326;font:15px/1.5 system-ui,sans-serif;padding:24px}
+h1,h2{font-family:Georgia,serif;color:#7A1F3D;margin:8px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:30px}
+figure{margin:0;border:1px solid #EBD9D2;border-radius:14px;overflow:hidden;background:#fff}
+figure div{display:grid;place-items:center;min-height:150px;padding:18px}
+figure img{max-width:100%;max-height:120px}
+figure.osc div{background:#7A1F3D}
+figcaption{font-size:12px;padding:8px 12px;border-top:1px solid #EBD9D2;color:#6B5A5F;word-break:break-all}
+.tam{display:flex;gap:18px;align-items:end;padding:18px;background:#fff;border:1px solid #EBD9D2;border-radius:14px;margin-bottom:30px;flex-wrap:wrap}
+</style></head><body>
+<h1>Kit de logos · Mi Cita Ideal</h1>
+<h2>Logo principal · El encuentro</h2>
+<div class="grid" id="principal"></div>
+<h2>Tamaños chicos</h2>
+<div class="tam"><img src="principal/mci-favicon.svg" width="16"><img src="principal/mci-favicon.svg" width="32"><img src="principal/mci-icono.svg" width="48"><img src="principal/mci-avatar-instagram.svg" width="110"></div>
+<h2>Líneas</h2>
+<div class="grid" id="lineas"></div>
+<script>
+const P=["mci-logo-horizontal","mci-logo-horizontal-negativo","mci-logo-horizontal-mono-bordo","mci-logo-vertical","mci-logo-vertical-negativo","mci-icono","mci-icono-negativo","mci-icono-mono-bordo","mci-icono-mono-crema","mci-favicon","mci-avatar-instagram"];
+const L=["cafe-de-por-medio","planes-de-viaje","si-acepto","la-entrada","cartas-con-sello"];
+const fig=(src)=>`<figure class="${/negativo|crema/.test(src)?"osc":""}"><div><img src="${src}" alt=""></div><figcaption>${src}</figcaption></figure>`;
+principal.innerHTML=P.map(n=>fig(`principal/${n}.svg`)).join("");
+lineas.innerHTML=L.flatMap(n=>[`lineas/${n}.svg`,`lineas/${n}-negativo.svg`,`lineas/${n}-icono.svg`]).concat(["lineas/sello-firma-carta.svg","lineas/sello-firma-carta-bordo.svg"]).map(fig).join("");
+</script>
+</body></html>
