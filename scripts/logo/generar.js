@@ -178,6 +178,15 @@ function selloCarta(p, rot = -8) {
 guardar('lineas/sello-firma-carta.svg', selloCarta(CLARO));
 guardar('lineas/sello-firma-carta-bordo.svg', selloCarta(MONO_B));
 
+// ---------- marca sin lema ----------
+// Solo ícono + nombre, sin lema: para la barra de la web y lugares chicos.
+function marca(p) {
+  const T = 44, wN = medir(F.tit, NOMBRE, T);
+  return svg(80 + wN, 64, icono('encuentro', p, 0, 0, 64) + texto(F.tit, NOMBRE, 80, 45, T, p.txt), 'Mi Cita Ideal');
+}
+guardar('principal/mci-marca.svg', marca(CLARO));
+guardar('principal/mci-marca-negativo.svg', marca(OSCURO));
+
 // ---------- escribir ----------
 for (const [rel, contenido] of Object.entries(archivos)) {
   const dest = path.join(OUT, rel);

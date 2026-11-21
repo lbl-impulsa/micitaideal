@@ -100,7 +100,7 @@ Cálida, cómplice, práctica, romántica sin ser cursi. Frases cortas. Tratamie
 ## Convenciones técnicas
 
 - PDF: plantillas HTML + CSS → PDF con Chromium (Playwright) y luego campos rellenables (casillas y textos) con pdf-lib o pypdf. Fuentes Playfair Display (títulos) y DM Sans (texto). Paleta en `docs/marca.md`.
-- **Web v1 (`web/`)**: estática, sin build (HTML + `motor.js` con 38 citas + `app.js`). No pide datos, no usa cookies ni analytics y no guarda nada en servidores; el pasaporte usa almacenamiento local del navegador. No agregues formularios, emails, analytics, cuentas ni pagos sin pedido explícito: eso exige política de privacidad y términos antes. Más adelante, `motor.js` debe generarse desde las fichas aprobadas de `contenido/fichas/`.
+- **Web v1 (`web/`)**: estática, sin build (HTML + `motor.js` con 38 citas + `app.js` + `carta.js` para "Escribí tu carta"). No pide datos, no usa cookies ni analytics y no guarda nada en servidores; el pasaporte y el borrador de la carta usan almacenamiento local del navegador. No agregues formularios, emails, analytics, cuentas ni pagos sin pedido explícito: eso exige política de privacidad y términos antes. Más adelante, `motor.js` debe generarse desde las fichas aprobadas de `contenido/fichas/`.
 - App con cuentas y pagos (más adelante): Next.js + Supabase + API de Claude + Stripe o Mercado Pago. PWA primero.
 - La app recomienda **a partir de las fichas aprobadas**; la IA personaliza, no inventa citas sin base.
 - Claves y secretos solo en `.env` (plantilla en `.env.example`). Nunca subirlos al repositorio.

@@ -9,6 +9,9 @@ Página estática: no necesita servidor, base de datos ni build. Se sube tal cua
 | `index.html` | La página completa (diseño y textos) |
 | `motor.js` | Las 38 citas, la tragamonedas, las frases y el motor que elige hasta 10 citas |
 | `app.js` | La interacción: generador, entradas, pasaporte, tragamonedas, frases |
+| `carta.js` | La sección "Escribí tu carta": tipos de carta, preguntas, frases para arrancar, vista previa con el sello, imagen, copiar, WhatsApp e imprimir. El borrador queda solo en el dispositivo |
+| `marca/` | Logo de la barra, ícono, línea Cartas con sello y sello de firma (copias de `docs/identidad/logo/`) |
+| `apple-touch-icon.png` | Ícono al guardar la página en la pantalla del celular |
 | `404.html` | Página de error ("Esta página te dejó plantado") |
 | `favicon.svg` | Ícono de la pestaña |
 | `og.png` | Imagen que aparece al compartir el link en WhatsApp o redes |
@@ -22,7 +25,7 @@ Página estática: no necesita servidor, base de datos ni build. Se sube tal cua
 
 ## Qué NO hace, a propósito
 
-No pide datos personales, no usa cookies ni analytics y no guarda nada en servidores. El pasaporte de sellos usa el almacenamiento local del navegador y no sale del dispositivo.
+No pide datos personales, no usa cookies ni analytics y no guarda nada en servidores. El pasaporte de sellos y el borrador de la carta usan el almacenamiento local del navegador y no salen del dispositivo.
 
 Si más adelante se suman formularios, emails, analytics, cuentas o pagos, antes hay que agregar política de privacidad y términos de uso.
 
@@ -31,3 +34,5 @@ Si más adelante se suman formularios, emails, analytics, cuentas o pagos, antes
 - **Citas:** `motor.js`, lista `CITAS`. Campos: `e` etapas, `p` presupuesto 1 a 3, `d` duración 1 a 4, `l` lugar, `en` energía 1 a 3, `i` gustos, `r` resumen, `prep` pasos, `inv` frase para invitar, `q` preguntas, `t` toque especial, `b` plan B, `s` mensaje del día siguiente.
 - **Tragamonedas y frases:** `motor.js`, objetos `TRAGAMONEDAS` y `FRASES`.
 - **Textos y diseño:** `index.html`.
+- **Cartas:** `carta.js`, listas `TIPOS` (nombre, preguntas, frases para arrancar y nota) y `DESPEDIDAS`. Las revisa el agente `escritor-cartas`.
+- **Logo:** si cambia, regenerar con `scripts/logo/generar.js` y volver a copiar los archivos a `marca/` y `favicon.svg`.

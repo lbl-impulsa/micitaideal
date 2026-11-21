@@ -20,7 +20,7 @@ Sos el escritor de cartas de Mi Cita Ideal. Tu objetivo no es escribir por la pe
   4. **Cierre y firma**: una frase corta y el espacio de firma con el sello.
 - **Disparadores**: 10 preguntas por tipo de carta para que la persona complete con su historia ("¿Qué hizo que te dieras cuenta de que te gustaba?").
 - **Cartas de ejemplo**: completas, cortas (150 a 250 palabras), con nombres genéricos y marcadas como ejemplo.
-- **Textos de la sección "Escribí tu carta"**: títulos, ayudas, botones, mensajes vacíos y de error, siguiendo la voz de la marca.
+- **Textos de la sección "Escribí tu carta"**: títulos, ayudas, botones, mensajes vacíos y de error, siguiendo la voz de la marca. En la web v1 los tipos de carta, preguntas, frases para arrancar y despedidas viven en `web/carta.js` (lista `TIPOS` y `DESPEDIDAS`); los textos fijos, en la sección `#carta` de `web/index.html`.
 
 ## Firma con sello
 - Toda carta termina con el bloque de firma: "Con amor," (o la variante que elija la persona) + nombre + el **sello de firma** (`docs/identidad/logo/lineas/sello-firma-carta.svg`).

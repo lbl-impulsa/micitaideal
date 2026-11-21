@@ -12,9 +12,10 @@
 <meta property="og:image" content="https://micitaideal.vercel.app/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&amp;family=Playfair+Display:wght@700;800&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&amp;family=Playfair+Display:ital,wght@0,700;0,800;1,400;1,500&amp;display=swap">
 <style>
 :root {
   /* Plan: franjas plenas de vino, rosa y crema; cada cita es una entrada de papel con talón "Admite 2", el objeto memorable de la página. Todo alineado a la izquierda. */
@@ -67,7 +68,8 @@ img, svg { max-width: 100%; }
 .barra { background: var(--vino); color: var(--crema); }
 .barra .contenedor { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
 .marca { display: inline-flex; align-items: center; gap: 10px; color: inherit; text-decoration: none; font-family: var(--f-display); font-weight: 700; font-size: 1.3rem; }
-.marca .icono { width: 30px; height: 30px; fill: var(--coral); }
+.marca img { display: block; height: 38px; width: auto; }
+.pie-pagina .marca img { height: 34px; }
 .menu { display: flex; align-items: center; gap: 22px; }
 .menu ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; }
 .menu a { color: var(--rosa); text-decoration: none; font-weight: 500; font-size: .95rem; }
@@ -249,6 +251,45 @@ input[type="range"] { width: 100%; accent-color: var(--vino); min-height: 32px; 
 .cierre-ebooks { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; }
 @media (max-width: 900px) { .tapas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
+/* Carta */
+.carta-sec { background: var(--rosa); padding-block: clamp(48px, 7vw, 96px); }
+.carta-cabeza { margin-bottom: 30px; }
+.carta-linea { display: block; height: 52px; width: auto; margin-bottom: 18px; }
+.carta-sec h2 { font-size: clamp(2.1rem, 4.2vw, 3.2rem); color: var(--vino); margin-bottom: 12px; }
+.carta-sec .bajada { max-width: 58ch; }
+.carta-grilla { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 48px); align-items: start; }
+.carta-editor { background: var(--papel); border-radius: 22px; padding: clamp(20px, 3.5vw, 32px); box-shadow: 0 24px 50px -30px rgba(90, 21, 48, .5); display: grid; gap: 20px; min-width: 0; }
+.carta-editor fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.carta-editor legend { padding: 0; margin-bottom: 8px; }
+.disparadores { background: #FCEDEC; border-radius: 16px; padding: 16px 18px; display: grid; gap: 10px; }
+.disparadores ul { margin: 0 0 4px; padding-left: 1.1em; display: grid; gap: 4px; }
+.disparadores .chip { text-align: left; border-radius: 16px; line-height: 1.3; }
+.carta-fila { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.carta-editor textarea { width: 100%; font: inherit; padding: 12px 14px; border-radius: 12px; border: 2px solid var(--linea); background: #fff; color: var(--carbon); resize: vertical; min-height: 200px; line-height: 1.55; }
+.carta-editor textarea:focus-visible { border-color: var(--vino); }
+.contador { font-size: .85rem; color: var(--suave); text-align: right; font-variant-numeric: tabular-nums; }
+.carta-vista { position: sticky; top: 20px; display: grid; gap: 18px; min-width: 0; }
+.carta-hoja { background-color: #FFFDF9; background-image: repeating-linear-gradient(#FFFDF9 0 33px, #F1E2D9 33px 34px); background-position: 0 28px; border-radius: 6px; padding: 32px clamp(20px, 4vw, 40px) 24px; box-shadow: 0 2px 0 rgba(42, 35, 38, .05), 0 26px 50px -26px rgba(90, 21, 48, .6); transform: rotate(-.6deg); font-family: var(--f-display); font-style: italic; font-weight: 400; font-size: 1.12rem; line-height: 34px; color: var(--carbon); min-height: 460px; display: flex; flex-direction: column; overflow-wrap: anywhere; }
+.carta-fecha { text-align: right; font: 500 .9rem/34px var(--f-texto); color: var(--suave); }
+.carta-saludo { font-style: normal; font-weight: 700; color: var(--vino); font-size: 1.25rem; }
+.carta-texto { flex: 1; }
+.carta-texto p { margin: 0; white-space: pre-wrap; }
+.carta-texto .vacio { color: #B3A0A6; }
+.carta-firma { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 14px; }
+.carta-desp { color: var(--vino); }
+.carta-nombre { font-weight: 500; font-size: 1.45rem; }
+.carta-sello { width: 118px; height: 118px; flex: none; opacity: .92; transform: rotate(6deg); }
+.carta-sec .vaciar { margin-top: 0; }
+.carta-sec .vaciar p { color: var(--carbon); }
+@media (max-width: 900px) { .carta-grilla { grid-template-columns: 1fr; } .carta-vista { position: static; } }
+@media (max-width: 520px) { .carta-fila { grid-template-columns: 1fr; } .carta-hoja { min-height: 380px; } .carta-sello { width: 92px; height: 92px; } .carta-linea { height: 42px; } }
+@media print {
+  body.imprimir-carta > *:not(main), body.imprimir-carta main > *:not(#carta), body.imprimir-carta .carta-cabeza, body.imprimir-carta .carta-editor, body.imprimir-carta .carta-acciones, body.imprimir-carta #carta-confirmar { display: none !important; }
+  html, body.imprimir-carta, body.imprimir-carta .carta-sec { background: #fff !important; padding: 0; }
+  body.imprimir-carta .carta-grilla { display: block; }
+  body.imprimir-carta .carta-hoja { transform: none; box-shadow: none; min-height: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
 /* Pie */
 .pie-pagina { background: var(--carbon); color: #EADBD8; padding-block: 44px; font-size: .95rem; }
 .pie-pagina .contenedor { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 28px; }
@@ -276,13 +317,14 @@ input[type="range"] { width: 100%; accent-color: var(--vino); min-height: 32px; 
 
 <header class="barra oscuro">
   <div class="contenedor">
-    <a class="marca" href="#inicio" aria-label="Mi Cita Ideal, inicio"><svg class="icono" aria-hidden="true"><use href="#corazon"/></svg>Mi Cita Ideal</a>
+    <a class="marca" href="#inicio"><img src="marca/mci-marca-negativo.svg" alt="Mi Cita Ideal, inicio" width="208" height="38"></a>
     <nav class="menu" aria-label="Secciones">
       <ul>
         <li><a href="#generador">Armar cita</a></li>
         <li><a href="#jugar">Tragamonedas</a></li>
         <li><a href="#frases">Frases</a></li>
         <li><a href="#pasaporte">Pasaporte</a></li>
+        <li><a href="#carta">Carta</a></li>
         <li><a href="#ebooks">Ebooks</a></li>
       </ul>
       <a class="ig" href="https://www.instagram.com/micitaideal/" rel="noopener" target="_blank">@micitaideal</a>
@@ -435,6 +477,85 @@ input[type="range"] { width: 100%; accent-color: var(--vino); min-height: 32px; 
     </div>
   </section>
 
+  <section id="carta" class="carta-sec" aria-labelledby="carta-titulo">
+    <div class="contenedor">
+      <div class="carta-cabeza">
+        <img src="marca/cartas-con-sello.svg" alt="" width="280" height="64" class="carta-linea">
+        <h2 id="carta-titulo">Escribí tu carta</h2>
+        <p class="bajada">Elegí para qué es, mirá las preguntas que te ayudan a arrancar y escribila con tus palabras. Sale firmada con el sello de Mi Cita Ideal.</p>
+      </div>
+      <div class="carta-grilla">
+        <form class="carta-editor" id="carta-form" autocomplete="off" novalidate>
+          <fieldset class="campo">
+            <legend class="etiqueta">¿Para qué es?</legend>
+            <div class="chips chips-chicos" id="carta-tipos" role="group" aria-label="Tipo de carta"></div>
+          </fieldset>
+          <div class="disparadores" id="carta-ayuda" aria-live="polite">
+            <p class="etiqueta">Para arrancar, pensá en esto</p>
+            <ul id="carta-preguntas"></ul>
+            <p class="etiqueta">O tocá una frase y seguila vos</p>
+            <div class="chips chips-chicos" id="carta-arranques" role="group" aria-label="Frases para empezar"></div>
+            <p class="nota" id="carta-nota" hidden></p>
+          </div>
+          <div class="carta-fila">
+            <div class="campo">
+              <label for="carta-para">Para</label>
+              <input type="text" id="carta-para" maxlength="40" placeholder="Nombre o apodo">
+            </div>
+            <div class="campo">
+              <label for="carta-lugar">Lugar y fecha</label>
+              <input type="text" id="carta-lugar" maxlength="60">
+            </div>
+          </div>
+          <div class="campo">
+            <label for="carta-cuerpo">Tu carta</label>
+            <textarea id="carta-cuerpo" rows="9" maxlength="1500" placeholder="Escribí como hablás. No hace falta que sea perfecta: tiene que ser tuya."></textarea>
+            <p class="contador" id="carta-contador">0 de 1500</p>
+          </div>
+          <div class="carta-fila">
+            <div class="campo">
+              <label for="carta-despedida">Despedida</label>
+              <input type="text" id="carta-despedida" maxlength="30" value="Con amor,">
+              <div class="chips chips-chicos" id="carta-despedidas" role="group" aria-label="Despedidas rápidas"></div>
+            </div>
+            <div class="campo">
+              <label for="carta-firma">Tu firma</label>
+              <input type="text" id="carta-firma" maxlength="40" placeholder="Tu nombre">
+            </div>
+          </div>
+          <p class="nota">Tu borrador se guarda solo en este dispositivo. No lo vemos ni lo mandamos a ningún lado.</p>
+        </form>
+
+        <div class="carta-vista">
+          <article class="carta-hoja" id="carta-hoja" aria-label="Vista previa de la carta">
+            <p class="carta-fecha" id="vista-lugar"></p>
+            <p class="carta-saludo" id="vista-para"></p>
+            <div class="carta-texto" id="vista-cuerpo"></div>
+            <div class="carta-firma">
+              <div>
+                <p class="carta-desp" id="vista-despedida"></p>
+                <p class="carta-nombre" id="vista-firma"></p>
+              </div>
+              <img src="marca/sello-firma.svg" alt="Sello de Mi Cita Ideal" class="carta-sello" width="200" height="200">
+            </div>
+          </article>
+          <div class="botonera carta-acciones">
+            <button type="button" class="btn btn-vino" id="carta-imagen">Guardar imagen</button>
+            <button type="button" class="btn btn-linea" id="carta-copiar">Copiar texto</button>
+            <a class="btn btn-linea" id="carta-wa" href="#" target="_blank" rel="noopener">Mandar por WhatsApp</a>
+            <button type="button" class="btn btn-texto" id="carta-imprimir">Imprimir</button>
+            <button type="button" class="btn btn-texto" id="carta-borrar">Empezar de nuevo</button>
+          </div>
+          <div class="vaciar" id="carta-confirmar" hidden>
+            <p>¿Borramos la carta? No se puede recuperar.</p>
+            <button type="button" class="btn btn-vino btn-chico" id="carta-borrar-si">Sí, borrar</button>
+            <button type="button" class="btn btn-linea btn-chico" id="carta-borrar-no">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="ebooks" class="ebooks" aria-labelledby="eb-titulo">
     <div class="contenedor">
       <h2 id="eb-titulo">Se vienen los ebooks</h2>
@@ -468,7 +589,7 @@ input[type="range"] { width: 100%; accent-color: var(--vino); min-height: 32px; 
 <footer class="pie-pagina oscuro">
   <div class="contenedor">
     <div>
-      <a class="marca" href="#inicio"><svg class="icono" aria-hidden="true"><use href="#corazon"/></svg>Mi Cita Ideal</a>
+      <a class="marca" href="#inicio"><img src="marca/mci-marca-negativo.svg" alt="Mi Cita Ideal" width="186" height="34"></a>
       <p>Del primer café al sí, acepto.</p>
       <p>Un proyecto de LBL Impulsa. <a href="https://www.instagram.com/micitaideal/" target="_blank" rel="noopener">@micitaideal</a></p>
     </div>
@@ -485,5 +606,6 @@ input[type="range"] { width: 100%; accent-color: var(--vino); min-height: 32px; 
 <canvas id="confeti" aria-hidden="true"></canvas>
 <script src="motor.js"></script>
 <script src="app.js"></script>
+<script src="carta.js"></script>
 </body>
 </html>
